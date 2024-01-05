@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="plugins/glightbox/glightbox.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-clear-medium">
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Vizyon Panosu</h1>
+                        </div>
+                    </div>
+                    <p class="mb-0 pt-2">
+                        Hayalinizde canlandırmak yapabileceğiniz en güçlü zihin egzersizlerinden biridir.
+                        Olimpiyat atletleri bu yöntemi çok uzun yıllar performanslarını yukarı taşımak için kullanmışlar
+                    </p>
+                </div>
+
+                <include file="includes/agenda.html"></include>
+            </div>
+
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex mb-3">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Vizyonlarım</h1>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                            <a href="#" id="menu-add-vision-button" class="icon icon-s gradient-blue rounded-m">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                        <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="divider mt-0 mb-3"></div>
+
+                    <div id="userVisionList" class="row mb-0"></div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="menu-add-vision" class="menu menu-box-bottom menu-box-detached rounded-m" style="display: block;">
+        <div class="menu-title mt-n1">
+            <h1>Vizyon Ekle</h1>
+            <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+        </div>
+        <!-- <div class="divider divider-margins mt-3 mb-3"></div> -->
+        <div class="content mt-3">
+            <!-- <div class="input-style has-borders no-icon mb-4">
+                <input type="name" class="form-control" id="userNoteAddTitle" placeholder="Not Başlığı" />
+                <label for="userNoteAddTitle" class="color-blue-dark font-10">Not Başlığı</label>
+                <em>(zorunlu)</em>
+            </div> -->
+            
+            <!-- <div class="list-grup text-center list-custom-large upload-file-data">
+                <img id="visionImage" src="images/profile.png" width="115" height="115" class="rounded-circle mt-2 mb-2 shadow-xl preload-img">
+            </div> -->
+
+
+            <!-- <div class="file-data pb-4">
+              <input accept="image/*" class="upload-file border-highlight rounded-sm" id="file-upload" type="file">
+              <p class="upload-file-text color-theme opacity-70 border pt-4 pb-5 rounded-sm"><i class="fa fa-image ms-n3 pe-3"></i>Select Event Cover Image</p>
+            </div> -->
+            <!-- <div class="list-group list-custom-large upload-file-data disabled">
+              <img class="img-fluid rounded-m mb-4" id="image-data" src="images/empty.png">
+            </div> -->
+
+            <div class="list-grup text-center list-custom-large upload-file-data py-3 px-4">
+              <img id="visionImage" class="img-fluid rounded-m disabled shadow-l" src="images/empty.png">
+              <div id="visionImagePreview" class="font-500 text-uppercase color-th eme opacity-90 border shadow-l bg-white pt-3 pb-3 rounded-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polygon points="0 0 24 0 24 24 0 24"/>
+                        <path d="M6,5 L18,5 C19.6568542,5 21,6.34314575 21,8 L21,17 C21,18.6568542 19.6568542,20 18,20 L6,20 C4.34314575,20 3,18.6568542 3,17 L3,8 C3,6.34314575 4.34314575,5 6,5 Z M5,17 L14,17 L9.5,11 L5,17 Z M16,14 C17.6568542,14 19,12.6568542 19,11 C19,9.34314575 17.6568542,8 16,8 C14.3431458,8 13,9.34314575 13,11 C13,12.6568542 14.3431458,14 16,14 Z" fill="#CCCCCC"/>
+                    </g>
+                </svg>
+                VİZYON ÖNİZLEME
+              </div>
+            </div>
+            <!-- <div class="file-data pb-4">
+              <input accept="image/*" class="upload-file border-highlight rounded-sm" id="file-upload" type="file">
+              <p class="upload-file-text color-theme opacity-70 border pt-4 pb-5 rounded-sm"><i class="fa fa-image ms-n3 pe-3">
+
+              </i>VİZYON YÜKLE</p>
+            </div> -->
+            <!-- <div class="file-data mb-3">
+                <input type="file" id="upload-file-vision" class="upload-file upload-file-vision pt-3 pb-4  rounded-sm border-highight shadow-s " accept="image/*">
+                <p class="upload-file-text color-theme opacity-70 border pt-2 pb-4 rounded-sm">YÜKLE</p>
+            </div> -->
+            
+            <div class="col-12">
+              <div class="d-flex pt-2">
+                  <div>
+                        
+                    <div class="file-data">
+                      <input type="file" id="upload-file-vision" class="upload-file upload-file-vision bg-fade-green-dark shadow-s rounded-sm " accept="image/*">
+                      <p class="upload-file-text color-white font-600 text-uppercase font-14 btn btn-full btn-m px-4" style="margin-top:-45px!important">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <rect x="0" y="0" width="24" height="24"/>
+                              <path d="M2,13 C2,12.5 2.5,12 3,12 C3.5,12 4,12.5 4,13 C4,13.3333333 4,15 4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 C2,15 2,13.3333333 2,13 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                              <rect fill="#000000" opacity="0.3" x="11" y="2" width="2" height="14" rx="1"/>
+                              <path d="M12.0362375,3.37797611 L7.70710678,7.70710678 C7.31658249,8.09763107 6.68341751,8.09763107 6.29289322,7.70710678 C5.90236893,7.31658249 5.90236893,6.68341751 6.29289322,6.29289322 L11.2928932,1.29289322 C11.6689749,0.916811528 12.2736364,0.900910387 12.6689647,1.25670585 L17.6689647,5.75670585 C18.0794748,6.12616487 18.1127532,6.75845471 17.7432941,7.16896473 C17.3738351,7.57947475 16.7415453,7.61275317 16.3310353,7.24329415 L12.0362375,3.37797611 Z" fill="#000000" fill-rule="nonzero"/>
+                          </g>
+                      </svg>
+                        Yükle</p>
+                    </div>
+                  </div>
+                  <div class="ms-auto">
+                    <a href="#" id="userVisionAddButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24"/>
+                            <path d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) "/>
+                            <path d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) "/>
+                        </g>
+                    </svg>
+                      KAYDET</a>
+                  </div>
+              </div>
+              
+            </div>
+        </div>
+    </div>
+    <!-- registerFormImage
+    upload-file-register -->
+
+    <include file="includes/menu.html"></include>
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="plugins/glightbox/glightbox.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/vizyonpanosu.js"></script>
+
+</body>
+
+</html>

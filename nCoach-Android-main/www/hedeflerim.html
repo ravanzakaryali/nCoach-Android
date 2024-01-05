@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="styles/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }            
+        });
+    </script>
+</head>
+
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-clear-medium">
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Hedeflerim</h1>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                        </div>
+                    </div>
+                    <p class="mb-0 pt-2">
+                        Başarı yolculuğunda gerçekleştirmek üzere belirlediğiniz hedefleri burada listeleyin.
+                    </p>
+                </div>
+
+                
+                <include file="includes/agenda.html"></include>
+            </div>
+            
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex mb-3">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Hedef Listem</h1>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                            <a href="#" data-menu="menu-purpose-filter" class="icon icon-s gradient-blue rounded-m me-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="#" data-menu="menu-modal-add" class="icon icon-s gradient-blue rounded-m">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                        <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="divider mt-0 mb-2"></div>
+
+                    <div id="userPurposeList" class="listActiveEffect listDivider rowReset"></div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-purpose-filter" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Hedefleri Sırala</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-3"></div>
+            <div class="content mb-0">
+                <div>
+                    <div class="col-12">
+                        <div class="inp ut-style has-borders no-icon mb-4">
+                            <!-- <label for="userPurposeFilterType" class="color-highlight">Kriter Seç</label> -->
+                            <select id="userPurposeFilterType" class="select2">
+                                <option value="" disabled="" selected="">Bir Kriter Seçin</option>
+                                <option value="duration">Hedef Süresine Göre</option>
+                                <option value="status">Ulaşılan Hedefler</option>
+                                <option value="date">Eklenme Tarihine Göre</option>
+                            </select>
+                            <!-- <span><i class="fa fa-chevron-down"></i></span>
+                            <i class="fa fa-check disabled valid color-green-dark"></i>
+                            <i class="fa fa-check disabled invalid color-red-dark"></i>
+                            <em></em> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><a href="#" id="userPurposeFilterButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light">Sırala</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <include file="includes/menu.html"></include>
+
+        <input type="hidden" id="userPurposeId">
+        
+        <div id="menu-modal-purpose-detail" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Hedef Detayları</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+                <div class="row mb-1">
+                    <div class="col-3">
+                        <div class="bg-white rounded-sm color-theme shadow-xl text-center overflow-hidden mt-2">
+                            <span class="bg-red-dark font-10 d-block mb-2 px-3 line-height-xs py-1" id="userPurposeDetailMonth"></span>
+                            <span class="font-23 font-600 d-block mb-n3 line-height-s" id="userPurposeDetailDay"></span><br>
+                        </div>
+                    </div>
+                    <div class="col-9 ps-4">
+                        <div class="d-flex">
+                            <div>
+                                <p class="font-700 color-theme">Oluşturulma</p>
+                            </div>
+                            <div class="ms-auto">
+                                <p class="font-400" id="userPurposeDetailDate"></p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div>
+                                <p class="font-700 color-theme">Hedef Düresi</p>
+                            </div>
+                            <div class="ms-auto">
+                                <p class="font-400" id="userPurposeDetailDuration"></p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div>
+                                <p class="font-700 color-theme">Hedef Durumu</p>
+                            </div>
+                            <div class="ms-auto">
+                                <div id="userPurposeDetailStatus"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-0">
+                    <div class="divider divider-margins w-100 mt-2 mb-2"></div>
+                    <div class="col-12">
+                        <h4 class="font-14 mt-1" id="userPurposeDetailTitle"></h4>
+                        <p id="userPurposeDetailPurpose"></p>
+                    </div>
+                    <div class="divider divider-margins w-100 mt-2 mb-3"></div>
+                    
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <div id="userPurposeStatusButton">
+                                
+                            </div>
+                            <div class="ms-auto">
+                                <a href="#" id="userPurposeEditButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) "/>
+                                            <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        </g>
+                                    </svg>
+                                    DÜZENLE</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="menu-modal-purpose-edit" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Hedef Detayı</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+                <div class="row mb-0">
+                    <div class="col-12">
+                        <div class="input-style has-borders no-icon mb-4">
+                            <input type="url" class="form-control" id="userPurposeEditTitle" placeholder="Hedef Başlığı">
+                            <label for="userPurposeEditTitle" class="color-highlight">Hedef Başlığı</label>
+                            <em>(zorunlu)</em>
+                        </div>
+                        <div class="input-style has-borders no-icon mb-4">
+                            <textarea id="userPurposeEditPurpose" placeholder="Hedef Detayları"></textarea>
+                            <label for="userPurposeEditPurpose" class="color-highlight">Hedef Detayları</label>
+                            <em class="mt-n3"></em>
+                        </div>
+                        <div class="input-sty le has-borders no-icon mb-4">
+                            <!-- <label for="userPurposeEditDuration" class="color-highlight">Hedef Süresi Seç</label> -->
+                            <select id="userPurposeEditDuration" class="select2">
+                                <option value="" disabled="">Hedef Süresi Seç</option>
+                                <option value="0">6 Ay</option>
+                                <option value="1">6-18 Ay</option>
+                                <option value="2">18 Ay+</option>
+                            </select>
+                            <!-- <span><i class="fa fa-chevron-down"></i></span>
+                            <em></em> -->
+                        </div>
+                    </div>
+                    <!-- <div class="divider divider-margins w-100 mt-2 mb-2"></div>
+                    <div class="col-12"> -->
+                        <!-- <div class="list-group list-custom-small">
+                            <a href="#" data-trigger-switch="switch-1">
+                                <i class="fa fa-upload bg-gray-dark rounded-sm ms-0"></i>
+                                <span>Upload Files</span>
+                                <div class="custom-control small-switch ios-switch">
+                                    <input type="checkbox" class="ios-input" id="switch-1" checked>
+                                    <label class="custom-control-label" for="switch-1"></label>
+                                </div>
+                            </a>
+                        </div> -->
+                        <!-- <div class="list-group list-custom">
+                            <a data-trigger-switch="userPurposeEditStratus" href="#">
+                            <h4 class="font-14 mt-1">Hedef Durumu</h4>
+                            <div class="custom-control scale-switch ios-switch">
+                                <input type="checkbox" class="ios-input" id="userPurposeErditStatus" checked >
+                                <label class="custom-control-label" for="userPurposeErditStatus"></label>
+                            </div>
+                            </a>
+                        </div> -->
+                    <!-- </div> -->
+                    <!-- <div class="divider divider-margins w-100 mt-2 mb-3"></div> -->
+                    
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <div>
+                                <a href="#" id="userPurposeRemoveButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-red-light mb-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                                <rect x="0" y="7" width="16" height="2" rx="1"/>
+                                                <rect transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000) " x="0" y="7" width="16" height="2" rx="1"/>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    SİL
+                                </a>
+                            </div>
+                            <div class="ms-auto">
+                                <a href="#" id="userPurposeUpdateButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <polygon points="0 0 24 0 24 24 0 24"/>
+                                            <path d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) "/>
+                                            <path d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) "/>
+                                        </g>
+                                    </svg> Kaydet</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-modal-add" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Hedef Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+                
+                <div class="row mb-0">
+                    <div class="col-12">
+                        <div class="input-style has-borders no-icon mb-4">
+                            <input type="url" class="form-control" id="userPurposeAddTitle" placeholder="Hedef Başlığı">
+                            <label for="userPurposeAddTitle" class="color-highlight">Hedef Başlığı</label>
+                            <em>(zorunlu)</em>
+                        </div>
+                        <div class="input-style has-borders no-icon mb-4">
+                            <textarea id="userPurposeAddPurpose" placeholder="Hedef Detayları"></textarea>
+                            <label for="userPurposeAddPurpose" class="color-highlight">Hedef Detayları</label>
+                            <em class="mt-n3"></em>
+                        </div>
+                        <div class="input-sty le has-borders no-icon mb-4 " >
+                            <!-- <label for="userPurposeAddDuration" class="color-highlight">Hedef Süresi Seç</label> -->
+                            <select id="userPurposeAddDuration" class="select2">
+                                <option value="" disabled="">Hedef Süresi Seç</option>
+                                <option value="0">6 Ay</option>
+                                <option value="1">6-18 Ay</option>
+                                <option value="2">18 Ay+</option>
+                            </select>
+                            <!-- <span><i class="fa fa-chevron-down"></i></span>
+                            <em></em> -->
+                        </div>
+                        <!-- <div class="divider mt-2 mb-3"></div> -->
+                        <a href="#" id="userPurposeAddButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                    <path d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) "/>
+                                    <path d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) "/>
+                                </g>
+                            </svg>
+                            Kaydet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-purpose-success" class="menu menu-box-modal menu-box-detached">
+            <div class="content text-center py-2">
+                <i class="fa fa-check-circle color-green-dark fa-6x scale-box"></i>
+                <h1 class="pt-4 mb-0">Tebrikler</h1>
+                <p>Hedefinize Ulaştınız</p>
+                <a href="#"" class="close-menu btn btn-center-l btn-s bg-fade-blue-light rounded-sm text-uppercase font-600 mb-3">Kapat</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/hedeflerim.js"></script>
+    <script src="scripts/jquery-3.5.1.min.js"></script>
+
+    <script src="scripts/select2.min.js"></script>
+
+    <script>
+      setTimeout(() => {
+        $(function() {
+        $(".select2").select2({ minimumResultsForSearch: -1});
+      });
+      }, 1000);
+    </script>
+    
+</body>
+
+</html>

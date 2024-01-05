@@ -1,0 +1,917 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <title>nCoach</title>
+    <link href="styles/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css" />
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js" />
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png" />
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+            // const talyia = {containers: ["#page"], cache: false, animateHistoryBrowsing: false, plugins: [new SwupHeadPlugin({
+            //     persistAssets: true
+            // })], linkSelector: 'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'};
+            // const yarisleidy = new Swup(talyia);
+            // swup.on('pageView', function() {
+            // });
+            //     document.addEventListener("swup:pageView", kilie => {
+                    
+            //         console.log("girdi");
+            //     });
+
+        });
+        // document.addEventListener("swup:pageView", kilie => {
+            
+        //     console.log("girdi",1);
+        // });
+        // swup.on('pageView', function() {
+        //     console.log("girdi",2);
+        // });
+        // if (window.location.protocol !== "file:") {
+        //     const talyia = {containers: ["#page"], cache: false, animateHistoryBrowsing: false, plugins: [new SwupHeadPlugin], linkSelector: 'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'};
+        //     const yarisleidy = new Swup(talyia);
+        //     document.addEventListener("swup:pageView", kilie => {
+        //         init();
+        //     });
+        // }
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default" id="kisilistesi">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-clear-medium">
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Kişilerim</h1>
+                        </div>
+                    </div>
+                    <p class="mb-0 pt-2">
+                        Potansiyel müşteri adaylarınızın listesini oluşturun ve kategorilere ayırın.
+                    </p>
+                </div>
+                
+                <include file="includes/agenda.html"></include>
+            </div>
+
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex mb-3">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Kişi Listem</h1>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                            
+                            <a href="#" data-menu="menu-purpose-filter" class="icon icon-s gradient-blue rounded-m me-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="#" id="pageDataReload" class="icon icon-s gradient-red rounded-m me-1 d-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M8.43296491,7.17429118 L9.40782327,7.85689436 C9.49616631,7.91875282 9.56214077,8.00751728 9.5959027,8.10994332 C9.68235021,8.37220548 9.53982427,8.65489052 9.27756211,8.74133803 L5.89079566,9.85769242 C5.84469033,9.87288977 5.79661753,9.8812917 5.74809064,9.88263369 C5.4720538,9.8902674 5.24209339,9.67268366 5.23445968,9.39664682 L5.13610134,5.83998177 C5.13313425,5.73269078 5.16477113,5.62729274 5.22633424,5.53937151 C5.384723,5.31316892 5.69649589,5.25819495 5.92269848,5.4165837 L6.72910242,5.98123382 C8.16546398,4.72182424 10.0239806,4 12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 C7.581722,20 4,16.418278 4,12 L6,12 C6,15.3137085 8.6862915,18 12,18 C15.3137085,18 18,15.3137085 18,12 C18,8.6862915 15.3137085,6 12,6 C10.6885336,6 9.44767246,6.42282109 8.43296491,7.17429118 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="#" data-menu="menu-modal-search" class="icon icon-s gradient-blue rounded-m me-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="#" data-menu="menu-modal-add-1" class="icon icon-s gradient-blue rounded-m">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                        <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="divider mt-0 mb-0"></div>
+                    <div id="userContactList" class="listActiveEffect listDivider rowReset">
+
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" id="userContactId">
+        
+        <div id="menu-modal-search" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişilerde Ara</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <!-- <div class="divider divider-margins mt-3 mb-3"></div> -->
+            <div class="content mb-0 mt-3">
+                <div class="input-style has-borders no-icon mb-4">
+                    <input type="name" class="form-control" id="userContactSearchText" placeholder="Arama Kelimesi" />
+                    <label for="userContactSearchText" class="color-blue-dark font-10">Arama Kelimesi</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <a href="#" id="userContactSearchButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Ara</a>
+            </div>
+        </div>
+        
+        <div id="menu-modal-add-1" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişi Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="content mb-0 mt-0">
+                <h5 class="color-theme opacity-40 ps-1">Kişisel Bilgiler</h5>
+                <div class="divider mb-3 mt-2"></div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-user"></i>
+                    <input type="text" class="form-control" id="userContactAddName" placeholder="İsim Soyisim" onkeypress="onlyTextInput(event)" onkeydown="toUpperCaseConvert(this)" onkeyup="toUpperCaseConvert(this)" />
+                    <label for="userContactAddName" class="color-blue-dark font-10">İsim Soyisim</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" class="form-control" id="userContactAddPhone" placeholder="Telefon Numarası" onkeypress="onlyNumberInput(event)" />
+                    <label for="userContactAddPhone" class="color-blue-dark font-10">Telefon Numarası</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-at"></i>
+                    <input type="email" class="form-control" id="userContactAddEmail" placeholder="Email Adresi" onkeypress="removeTrim(event)" onkeydown="toLowerCaseConvert(this)" onkeyup="toLowerCaseConvert(this)" />
+                    <label for="userContactAddEmail" class="color-blue-dark font-10">Email Adresi</label>
+                    <em></em>
+                </div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-pager"></i>
+                    <textarea id="userContactAddDescription" placeholder="Açıklama" maxlength="145" class="mt-1"></textarea>
+                    <label for="userContactAddDescription" class="color-blue-dark font-10">Açıklama</label>
+                    <em></em>
+                </div>
+                <a href="#" id="userContactAddButton1" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4">DEVAM ET</a>
+            </div>
+        </div>
+        <div id="menu-modal-add-2" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişi Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="content mb-0 mt-0">
+                <h5 class="color-theme opacity-40 ps-1">Yakınlık</h5>
+                <div class="divider mb-3 mt-2"></div>
+                <p class="mb-2 text-center">Kişinizin size olan yakınlık derecesini seçebilirsiniz</p>
+                <div class="rating mb-5">
+                    <input type="radio" name="contactAddRating" id="add-rating-5" class="rating-5" value="5">
+                    <label for="add-rating-5"></label>
+                    <input type="radio" name="contactAddRating" id="add-rating-4" class="rating-4" value="4">
+                    <label for="add-rating-4"></label>
+                    <input type="radio" name="contactAddRating" id="add-rating-3" class="rating-3" value="3">
+                    <label for="add-rating-3"></label>
+                    <input type="radio" name="contactAddRating" id="add-rating-2" class="rating-2" value="2">
+                    <label for="add-rating-2"></label>
+                    <input type="radio" name="contactAddRating" id="add-rating-1" class="rating-1" value="1">
+                    <label for="add-rating-1"></label>
+                    <div class="emoji-wrapper">
+                    <div class="emoji">
+                        <svg class="rating-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256c0 141.44-114.64 256-256 256-80.48 0-152.32-37.12-199.28-95.28 43.92 35.52 99.84 56.72 160.72 56.72 141.36 0 256-114.56 256-256 0-60.88-21.2-116.8-56.72-160.72C474.8 103.68 512 175.52 512 256z" fill="#f4c534"/>
+                        <ellipse transform="scale(-1) rotate(31.21 715.433 -595.455)" cx="166.318" cy="199.829" rx="56.146" ry="56.13" fill="#fff"/>
+                        <ellipse transform="rotate(-148.804 180.87 175.82)" cx="180.871" cy="175.822" rx="28.048" ry="28.08" fill="#3e4347"/>
+                        <ellipse transform="rotate(-113.778 194.434 165.995)" cx="194.433" cy="165.993" rx="8.016" ry="5.296" fill="#5a5f63"/>
+                        <ellipse transform="scale(-1) rotate(31.21 715.397 -1237.664)" cx="345.695" cy="199.819" rx="56.146" ry="56.13" fill="#fff"/>
+                        <ellipse transform="rotate(-148.804 360.25 175.837)" cx="360.252" cy="175.84" rx="28.048" ry="28.08" fill="#3e4347"/>
+                        <ellipse transform="scale(-1) rotate(66.227 254.508 -573.138)" cx="373.794" cy="165.987" rx="8.016" ry="5.296" fill="#5a5f63"/>
+                        <path d="M370.56 344.4c0 7.696-6.224 13.92-13.92 13.92H155.36c-7.616 0-13.92-6.224-13.92-13.92s6.304-13.92 13.92-13.92h201.296c7.696.016 13.904 6.224 13.904 13.92z" fill="#3e4347"/>
+                    </svg>
+                        <svg class="rating-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                        <path d="M328.4 428a92.8 92.8 0 0 0-145-.1 6.8 6.8 0 0 1-12-5.8 86.6 86.6 0 0 1 84.5-69 86.6 86.6 0 0 1 84.7 69.8c1.3 6.9-7.7 10.6-12.2 5.1z" fill="#3e4347"/>
+                        <path d="M269.2 222.3c5.3 62.8 52 113.9 104.8 113.9 52.3 0 90.8-51.1 85.6-113.9-2-25-10.8-47.9-23.7-66.7-4.1-6.1-12.2-8-18.5-4.2a111.8 111.8 0 0 1-60.1 16.2c-22.8 0-42.1-5.6-57.8-14.8-6.8-4-15.4-1.5-18.9 5.4-9 18.2-13.2 40.3-11.4 64.1z" fill="#f4c534"/>
+                        <path d="M357 189.5c25.8 0 47-7.1 63.7-18.7 10 14.6 17 32.1 18.7 51.6 4 49.6-26.1 89.7-67.5 89.7-41.6 0-78.4-40.1-82.5-89.7A95 95 0 0 1 298 174c16 9.7 35.6 15.5 59 15.5z" fill="#fff"/>
+                        <path d="M396.2 246.1a38.5 38.5 0 0 1-38.7 38.6 38.5 38.5 0 0 1-38.6-38.6 38.6 38.6 0 1 1 77.3 0z" fill="#3e4347"/>
+                        <path d="M380.4 241.1c-3.2 3.2-9.9 1.7-14.9-3.2-4.8-4.8-6.2-11.5-3-14.7 3.3-3.4 10-2 14.9 2.9 4.9 5 6.4 11.7 3 15z" fill="#fff"/>
+                        <path d="M242.8 222.3c-5.3 62.8-52 113.9-104.8 113.9-52.3 0-90.8-51.1-85.6-113.9 2-25 10.8-47.9 23.7-66.7 4.1-6.1 12.2-8 18.5-4.2 16.2 10.1 36.2 16.2 60.1 16.2 22.8 0 42.1-5.6 57.8-14.8 6.8-4 15.4-1.5 18.9 5.4 9 18.2 13.2 40.3 11.4 64.1z" fill="#f4c534"/>
+                        <path d="M155 189.5c-25.8 0-47-7.1-63.7-18.7-10 14.6-17 32.1-18.7 51.6-4 49.6 26.1 89.7 67.5 89.7 41.6 0 78.4-40.1 82.5-89.7A95 95 0 0 0 214 174c-16 9.7-35.6 15.5-59 15.5z" fill="#fff"/>
+                        <path d="M115.8 246.1a38.5 38.5 0 0 0 38.7 38.6 38.5 38.5 0 0 0 38.6-38.6 38.6 38.6 0 1 0-77.3 0z" fill="#3e4347"/>
+                        <path d="M131.6 241.1c3.2 3.2 9.9 1.7 14.9-3.2 4.8-4.8 6.2-11.5 3-14.7-3.3-3.4-10-2-14.9 2.9-4.9 5-6.4 11.7-3 15z" fill="#fff"/>
+                    </svg>
+                        <svg class="rating-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                        <path d="M336.6 403.2c-6.5 8-16 10-25.5 5.2a117.6 117.6 0 0 0-110.2 0c-9.4 4.9-19 3.3-25.6-4.6-6.5-7.7-4.7-21.1 8.4-28 45.1-24 99.5-24 144.6 0 13 7 14.8 19.7 8.3 27.4z" fill="#3e4347"/>
+                        <path d="M276.6 244.3a79.3 79.3 0 1 1 158.8 0 79.5 79.5 0 1 1-158.8 0z" fill="#fff"/>
+                        <circle cx="340" cy="260.4" r="36.2" fill="#3e4347"/>
+                        <g fill="#fff">
+                        <ellipse transform="rotate(-135 326.4 246.6)" cx="326.4" cy="246.6" rx="6.5" ry="10"/>
+                        <path d="M231.9 244.3a79.3 79.3 0 1 0-158.8 0 79.5 79.5 0 1 0 158.8 0z"/>
+                        </g>
+                        <circle cx="168.5" cy="260.4" r="36.2" fill="#3e4347"/>
+                        <ellipse transform="rotate(-135 182.1 246.7)" cx="182.1" cy="246.7" rx="10" ry="6.5" fill="#fff"/>
+                    </svg>
+                        <svg class="rating-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                <path d="M407.7 352.8a163.9 163.9 0 0 1-303.5 0c-2.3-5.5 1.5-12 7.5-13.2a780.8 780.8 0 0 1 288.4 0c6 1.2 9.9 7.7 7.6 13.2z" fill="#3e4347"/>
+                <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                <g fill="#fff">
+                    <path d="M115.3 339c18.2 29.6 75.1 32.8 143.1 32.8 67.1 0 124.2-3.2 143.2-31.6l-1.5-.6a780.6 780.6 0 0 0-284.8-.6z"/>
+                    <ellipse cx="356.4" cy="205.3" rx="81.1" ry="81"/>
+                </g>
+                <ellipse cx="356.4" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
+                <g fill="#fff">
+                    <ellipse transform="scale(-1) rotate(45 454 -906)" cx="375.3" cy="188.1" rx="12" ry="8.1"/>
+                    <ellipse cx="155.6" cy="205.3" rx="81.1" ry="81"/>
+                </g>
+                <ellipse cx="155.6" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
+                <ellipse transform="scale(-1) rotate(45 454 -421.3)" cx="174.5" cy="188" rx="12" ry="8.1" fill="#fff"/>
+                </svg>
+                        <svg class="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                        <path d="M232.3 201.3c0 49.2-74.3 94.2-74.3 94.2s-74.4-45-74.4-94.2a38 38 0 0 1 74.4-11.1 38 38 0 0 1 74.3 11.1z" fill="#e24b4b"/>
+                        <path d="M96.1 173.3a37.7 37.7 0 0 0-12.4 28c0 49.2 74.3 94.2 74.3 94.2C80.2 229.8 95.6 175.2 96 173.3z" fill="#d03f3f"/>
+                        <path d="M215.2 200c-3.6 3-9.8 1-13.8-4.1-4.2-5.2-4.6-11.5-1.2-14.1 3.6-2.8 9.7-.7 13.9 4.4 4 5.2 4.6 11.4 1.1 13.8z" fill="#fff"/>
+                        <path d="M428.4 201.3c0 49.2-74.4 94.2-74.4 94.2s-74.3-45-74.3-94.2a38 38 0 0 1 74.4-11.1 38 38 0 0 1 74.3 11.1z" fill="#e24b4b"/>
+                        <path d="M292.2 173.3a37.7 37.7 0 0 0-12.4 28c0 49.2 74.3 94.2 74.3 94.2-77.8-65.7-62.4-120.3-61.9-122.2z" fill="#d03f3f"/>
+                        <path d="M411.3 200c-3.6 3-9.8 1-13.8-4.1-4.2-5.2-4.6-11.5-1.2-14.1 3.6-2.8 9.7-.7 13.9 4.4 4 5.2 4.6 11.4 1.1 13.8z" fill="#fff"/>
+                        <path d="M381.7 374.1c-30.2 35.9-75.3 64.4-125.7 64.4s-95.4-28.5-125.8-64.2a17.6 17.6 0 0 1 16.5-28.7 627.7 627.7 0 0 0 218.7-.1c16.2-2.7 27 16.1 16.3 28.6z" fill="#3e4347"/>
+                        <path d="M256 438.5c25.7 0 50-7.5 71.7-19.5-9-33.7-40.7-43.3-62.6-31.7-29.7 15.8-62.8-4.7-75.6 34.3 20.3 10.4 42.8 17 66.5 17z" fill="#e24b4b"/>
+                    </svg>
+                        <svg class="rating-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <g fill="#ffd93b">
+                        <circle cx="256" cy="256" r="256"/>
+                        <path d="M512 256A256 256 0 0 1 56.8 416.7a256 256 0 0 0 360-360c58 47 95.2 118.8 95.2 199.3z"/>
+                        </g>
+                        <path d="M512 99.4v165.1c0 11-8.9 19.9-19.7 19.9h-187c-13 0-23.5-10.5-23.5-23.5v-21.3c0-12.9-8.9-24.8-21.6-26.7-16.2-2.5-30 10-30 25.5V261c0 13-10.5 23.5-23.5 23.5h-187A19.7 19.7 0 0 1 0 264.7V99.4c0-10.9 8.8-19.7 19.7-19.7h472.6c10.8 0 19.7 8.7 19.7 19.7z" fill="#e9eff4"/>
+                        <path d="M204.6 138v88.2a23 23 0 0 1-23 23H58.2a23 23 0 0 1-23-23v-88.3a23 23 0 0 1 23-23h123.4a23 23 0 0 1 23 23z" fill="#45cbea"/>
+                        <path d="M476.9 138v88.2a23 23 0 0 1-23 23H330.3a23 23 0 0 1-23-23v-88.3a23 23 0 0 1 23-23h123.4a23 23 0 0 1 23 23z" fill="#e84d88"/>
+                        <g fill="#38c0dc">
+                        <path d="M95.2 114.9l-60 60v15.2l75.2-75.2zM123.3 114.9L35.1 203v23.2c0 1.8.3 3.7.7 5.4l116.8-116.7h-29.3z"/>
+                        </g>
+                        <g fill="#d23f77">
+                        <path d="M373.3 114.9l-66 66V196l81.3-81.2zM401.5 114.9l-94.1 94v17.3c0 3.5.8 6.8 2.2 9.8l121.1-121.1h-29.2z"/>
+                        </g>
+                        <path d="M329.5 395.2c0 44.7-33 81-73.4 81-40.7 0-73.5-36.3-73.5-81s32.8-81 73.5-81c40.5 0 73.4 36.3 73.4 81z" fill="#3e4347"/>
+                        <path d="M256 476.2a70 70 0 0 0 53.3-25.5 34.6 34.6 0 0 0-58-25 34.4 34.4 0 0 0-47.8 26 69.9 69.9 0 0 0 52.6 24.5z" fill="#e24b4b"/>
+                        <path d="M290.3 434.8c-1 3.4-5.8 5.2-11 3.9s-8.4-5.1-7.4-8.7c.8-3.3 5.7-5 10.7-3.8 5.1 1.4 8.5 5.3 7.7 8.6z" fill="#fff" opacity=".2"/>
+                    </svg>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div>
+                        <a href="#" data-menu="menu-modal-add-1" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-gray-light mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon points="0 0 24 0 24 24 0 24"/>
+        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
+        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
+    </g>
+</svg>
+GERİ
+                        </a>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" id="userContactAddButton2" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4">DEVAM ET</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-modal-add-3" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişi Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="content mb-0 mt-0">
+                <h5 class="color-theme opacity-40 ps-1">Potansiyel</h5>
+                <div class="divider mb-3 mt-2"></div>
+                <p class="mb-2 text-center">Kişinizin, müşteri olma potansiyelini kırmızıdan yeşile seçenelerinden belirleyebilirsiniz</p>
+
+                <div class="custom-radios my-3 mb-4">
+                    <div>
+                      <input type="radio" id="add-color-1" class="color-1" name="contactAddColor" value="0">
+                      <label for="add-color-1">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                    
+                    <div>
+                      <input type="radio" id="add-color-2" class="color-2" name="contactAddColor" value="1">
+                      <label for="add-color-2">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                    
+                    <div>
+                      <input type="radio" id="add-color-3" class="color-3" name="contactAddColor" value="2">
+                      <label for="add-color-3">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                  
+                    <div>
+                      <input type="radio" id="add-color-4" class="color-4" name="contactAddColor" value="3">
+                      <label for="add-color-4">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                  
+                    <div>
+                      <input type="radio" id="add-color-5" class="color-5" name="contactAddColor" value="4">
+                      <label for="add-color-5">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                </div>
+                <div id="previewAddContact" class="previewContact mb-4"></div>
+                
+                <div class="d-flex">
+                    <div>
+                        <a href="#" data-menu="menu-modal-add-2" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-gray-light mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon points="0 0 24 0 24 24 0 24"/>
+        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
+        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
+    </g>
+</svg>
+GERİ
+                        </a>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" id="userContactAddButton3" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon points="0 0 24 0 24 24 0 24"/>
+        <path d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) "/>
+        <path d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) "/>
+    </g>
+</svg>
+KAYDET</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-modal-add-4" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="content text-center px-3">
+            <i class="fa fa-heart scale-box color-red-dark fa-5x pb-3 pt-2"></i>
+            <h1>Tebrikler!</h1>
+            <p class="px-2 mb-3">
+                Kişi listenize başarıyla eklediniz
+            </p>
+            <a href="#" class="close-menu btn btn-full btn-m rounded-m bg-red-dark font-700 text-uppercase mb-4">Kapat</a>
+            </div>
+        </div>
+
+        <div id="menu-modal-detail" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title">
+              <h1>Kişi Detayı</h1>
+              <a class="close-menu" href="#"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+              <div class="row mb-0">
+                <div class="col-2">
+                  <span class="icon icon-contact rounded-xl" id="userContactDetailIcon"></span>
+                </div>
+                <div class="col-10 ps-4">
+                  <div class="d-flex">
+                    <div>
+                      <p class="font-600 color-theme ps-2">Ekleme Tarihi</p>
+                    </div>
+                    <div class="ms-auto">
+                        <p class="font-400" id="userContactDetailDate"></p>
+                    </div>
+                  </div>
+                  <div class="d-flex">
+                    <div>
+                      <p class="font-600 color-theme ps-2">Yakınlık Derecesi</p>
+                    </div>
+                    <div class="ms-auto" id="userContactDetailRating"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="divider mt-3 mb-3"></div>
+              <div class="row mb-0">
+                <div class="col-4"><h4 class="font-13 font-400 m-0 opacity-70">Adı Soyadı</h4></div>
+                <div class="col-8"><h4 class="font-14 text-end m-0" id="userContactDetailName"></h4></div>
+                <div class="col-12"><div class="divider w-100 mt-2 mb-1"></div></div>
+
+                <div class="col-4"><h4 class="font-13 font-400 m-0 opacity-70">Email</h4></div>
+                <div class="col-8"><h4 class="font-14 text-end m-0" id="userContactDetailEmail"></h4></div>
+                <div class="col-12"><div class="divider w-100 mt-2 mb-1"></div></div>
+
+                <div class="col-4"><h4 class="font-13 font-400 m-0 opacity-70">Telefon</h4></div>
+                <div class="col-8"><h4 class="font-14 text-end m-0" id="userContactDetailPhone"></h4></div>
+                <div class="col-12"><div class="divider w-100 mt-2 mb-1"></div></div>
+
+                <div class="col-12">
+                    <h4 class="font-13 font-400 m-0 opacity-70">Açıklama</h4>
+                    <p class="font-14 m-0 font-500 color-theme" id="userContactDetailDescription"></p>
+                </div>
+                <div class="col-12"><div class="divider w-100 mt-2 mb-3"></div></div>
+                <div class="col-12">
+                    <div class="d-flex">
+                     <div>
+                        <a href="#" id="userContactCallButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-green-light mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M13.0799676,14.7839934 L15.2839934,12.5799676 C15.8927139,11.9712471 16.0436229,11.0413042 15.6586342,10.2713269 L15.5337539,10.0215663 C15.1487653,9.25158901 15.2996742,8.3216461 15.9083948,7.71292558 L18.6411989,4.98012149 C18.836461,4.78485934 19.1530435,4.78485934 19.3483056,4.98012149 C19.3863063,5.01812215 19.4179321,5.06200062 19.4419658,5.11006808 L20.5459415,7.31801948 C21.3904962,9.0071287 21.0594452,11.0471565 19.7240871,12.3825146 L13.7252616,18.3813401 C12.2717221,19.8348796 10.1217008,20.3424308 8.17157288,19.6923882 L5.75709327,18.8875616 C5.49512161,18.8002377 5.35354162,18.5170777 5.4408655,18.2551061 C5.46541191,18.1814669 5.50676633,18.114554 5.56165376,18.0596666 L8.21292558,15.4083948 C8.8216461,14.7996742 9.75158901,14.6487653 10.5215663,15.0337539 L10.7713269,15.1586342 C11.5413042,15.5436229 12.4712471,15.3927139 13.0799676,14.7839934 Z" fill="#000000"/>
+                                    <path d="M14.1480759,6.00715131 L13.9566988,7.99797396 C12.4781389,7.8558405 11.0097207,8.36895892 9.93933983,9.43933983 C8.8724631,10.5062166 8.35911588,11.9685602 8.49664195,13.4426352 L6.50528978,13.6284215 C6.31304559,11.5678496 7.03283934,9.51741319 8.52512627,8.02512627 C10.0223249,6.52792766 12.0812426,5.80846733 14.1480759,6.00715131 Z M14.4980938,2.02230302 L14.313049,4.01372424 C11.6618299,3.76737046 9.03000738,4.69181803 7.1109127,6.6109127 C5.19447112,8.52735429 4.26985715,11.1545872 4.51274152,13.802405 L2.52110319,13.985098 C2.22450978,10.7517681 3.35562581,7.53777247 5.69669914,5.19669914 C8.04101739,2.85238089 11.2606138,1.72147333 14.4980938,2.02230302 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                </g>
+                            </svg>
+                            Ara
+                            </a>
+                        </div>
+                        <div class="ms-auto">
+                            <a href="#" id="userContactEditButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) "/>
+                                        <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                    </g>
+                                </svg>
+                                DÜZENLE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div id="menu-modal-edit-1" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişi Düzenle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="content mb-0 mt-0">
+                <h5 class="color-theme opacity-40 ps-1">Kişisel Bilgiler</h5>
+                <div class="divider mb-3 mt-2"></div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-user"></i>
+                    <input type="name" class="form-control" id="userContactEditName" placeholder="İsim Soyisim" onkeypress="onlyTextInput(event)" onkeydown="toUpperCaseConvert(this)" onkeyup="toUpperCaseConvert(this)" />
+                    <label for="userContactEditName" class="color-blue-dark font-10">İsim Soyisim</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" class="form-control" id="userContactEditPhone" placeholder="Telefon Numarası" onkeypress="onlyNumberInput(event)"/>
+                    <label for="userContactEditPhone" class="color-blue-dark font-10">Telefon Numarası</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-at"></i>
+                    <input type="email" class="form-control" id="userContactEditEmail" placeholder="Email Adresi" onkeypress="removeTrim(event)" onkeydown="toLowerCaseConvert(this)" onkeyup="toLowerCaseConvert(this)" />
+                    <label for="userContactEditEmail" class="color-blue-dark font-10">Email Adresi</label>
+                    <em></em>
+                </div>
+                <div class="input-style has-borders has-icon mb-3">
+                    <i class="fa fa-pager"></i>
+                    <textarea id="userContactEditDescription" placeholder="Açıklama" maxlength="145" class="mt-1"></textarea>
+                    <label for="userContactEditDescription" class="color-blue-dark font-10">Açıklama</label>
+                    <em></em>
+                </div>
+                    
+                <div class="col-12">
+                    <div class="d-flex">
+                        <div>
+                            <a href="#" id="userContactRemoveButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-red-light mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>
+                                        <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg>
+                                SİL
+                            </a>
+                        </div>
+                        <div class="ms-auto">
+                            <a href="#" id="userContactUpdateButton1" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4">DEVAM ET</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        <div id="menu-modal-edit-2" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişi Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="content mb-0 mt-0">
+                <h5 class="color-theme opacity-40 ps-1">Yakınlık</h5>
+                <div class="divider mb-3 mt-2"></div>
+                <p class="mb-2 text-center">Kişinizin size olan yakınlık derecesini seçebilirsiniz</p>
+                <div class="rating mb-5">
+                    <input type="radio" name="contactEditRating" id="edit-rating-5" class="rating-5" value="5">
+                    <label for="edit-rating-5"></label>
+                    <input type="radio" name="contactEditRating" id="edit-rating-4" class="rating-4" value="4">
+                    <label for="edit-rating-4"></label>
+                    <input type="radio" name="contactEditRating" id="edit-rating-3" class="rating-3" value="3">
+                    <label for="edit-rating-3"></label>
+                    <input type="radio" name="contactEditRating" id="edit-rating-2" class="rating-2" value="2">
+                    <label for="edit-rating-2"></label>
+                    <input type="radio" name="contactEditRating" id="edit-rating-1" class="rating-1" value="1">
+                    <label for="edit-rating-1"></label>
+                    <div class="emoji-wrapper">
+                    <div class="emoji">
+                        <svg class="rating-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256c0 141.44-114.64 256-256 256-80.48 0-152.32-37.12-199.28-95.28 43.92 35.52 99.84 56.72 160.72 56.72 141.36 0 256-114.56 256-256 0-60.88-21.2-116.8-56.72-160.72C474.8 103.68 512 175.52 512 256z" fill="#f4c534"/>
+                        <ellipse transform="scale(-1) rotate(31.21 715.433 -595.455)" cx="166.318" cy="199.829" rx="56.146" ry="56.13" fill="#fff"/>
+                        <ellipse transform="rotate(-148.804 180.87 175.82)" cx="180.871" cy="175.822" rx="28.048" ry="28.08" fill="#3e4347"/>
+                        <ellipse transform="rotate(-113.778 194.434 165.995)" cx="194.433" cy="165.993" rx="8.016" ry="5.296" fill="#5a5f63"/>
+                        <ellipse transform="scale(-1) rotate(31.21 715.397 -1237.664)" cx="345.695" cy="199.819" rx="56.146" ry="56.13" fill="#fff"/>
+                        <ellipse transform="rotate(-148.804 360.25 175.837)" cx="360.252" cy="175.84" rx="28.048" ry="28.08" fill="#3e4347"/>
+                        <ellipse transform="scale(-1) rotate(66.227 254.508 -573.138)" cx="373.794" cy="165.987" rx="8.016" ry="5.296" fill="#5a5f63"/>
+                        <path d="M370.56 344.4c0 7.696-6.224 13.92-13.92 13.92H155.36c-7.616 0-13.92-6.224-13.92-13.92s6.304-13.92 13.92-13.92h201.296c7.696.016 13.904 6.224 13.904 13.92z" fill="#3e4347"/>
+                    </svg>
+                        <svg class="rating-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                        <path d="M328.4 428a92.8 92.8 0 0 0-145-.1 6.8 6.8 0 0 1-12-5.8 86.6 86.6 0 0 1 84.5-69 86.6 86.6 0 0 1 84.7 69.8c1.3 6.9-7.7 10.6-12.2 5.1z" fill="#3e4347"/>
+                        <path d="M269.2 222.3c5.3 62.8 52 113.9 104.8 113.9 52.3 0 90.8-51.1 85.6-113.9-2-25-10.8-47.9-23.7-66.7-4.1-6.1-12.2-8-18.5-4.2a111.8 111.8 0 0 1-60.1 16.2c-22.8 0-42.1-5.6-57.8-14.8-6.8-4-15.4-1.5-18.9 5.4-9 18.2-13.2 40.3-11.4 64.1z" fill="#f4c534"/>
+                        <path d="M357 189.5c25.8 0 47-7.1 63.7-18.7 10 14.6 17 32.1 18.7 51.6 4 49.6-26.1 89.7-67.5 89.7-41.6 0-78.4-40.1-82.5-89.7A95 95 0 0 1 298 174c16 9.7 35.6 15.5 59 15.5z" fill="#fff"/>
+                        <path d="M396.2 246.1a38.5 38.5 0 0 1-38.7 38.6 38.5 38.5 0 0 1-38.6-38.6 38.6 38.6 0 1 1 77.3 0z" fill="#3e4347"/>
+                        <path d="M380.4 241.1c-3.2 3.2-9.9 1.7-14.9-3.2-4.8-4.8-6.2-11.5-3-14.7 3.3-3.4 10-2 14.9 2.9 4.9 5 6.4 11.7 3 15z" fill="#fff"/>
+                        <path d="M242.8 222.3c-5.3 62.8-52 113.9-104.8 113.9-52.3 0-90.8-51.1-85.6-113.9 2-25 10.8-47.9 23.7-66.7 4.1-6.1 12.2-8 18.5-4.2 16.2 10.1 36.2 16.2 60.1 16.2 22.8 0 42.1-5.6 57.8-14.8 6.8-4 15.4-1.5 18.9 5.4 9 18.2 13.2 40.3 11.4 64.1z" fill="#f4c534"/>
+                        <path d="M155 189.5c-25.8 0-47-7.1-63.7-18.7-10 14.6-17 32.1-18.7 51.6-4 49.6 26.1 89.7 67.5 89.7 41.6 0 78.4-40.1 82.5-89.7A95 95 0 0 0 214 174c-16 9.7-35.6 15.5-59 15.5z" fill="#fff"/>
+                        <path d="M115.8 246.1a38.5 38.5 0 0 0 38.7 38.6 38.5 38.5 0 0 0 38.6-38.6 38.6 38.6 0 1 0-77.3 0z" fill="#3e4347"/>
+                        <path d="M131.6 241.1c3.2 3.2 9.9 1.7 14.9-3.2 4.8-4.8 6.2-11.5 3-14.7-3.3-3.4-10-2-14.9 2.9-4.9 5-6.4 11.7-3 15z" fill="#fff"/>
+                    </svg>
+                        <svg class="rating-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                        <path d="M336.6 403.2c-6.5 8-16 10-25.5 5.2a117.6 117.6 0 0 0-110.2 0c-9.4 4.9-19 3.3-25.6-4.6-6.5-7.7-4.7-21.1 8.4-28 45.1-24 99.5-24 144.6 0 13 7 14.8 19.7 8.3 27.4z" fill="#3e4347"/>
+                        <path d="M276.6 244.3a79.3 79.3 0 1 1 158.8 0 79.5 79.5 0 1 1-158.8 0z" fill="#fff"/>
+                        <circle cx="340" cy="260.4" r="36.2" fill="#3e4347"/>
+                        <g fill="#fff">
+                        <ellipse transform="rotate(-135 326.4 246.6)" cx="326.4" cy="246.6" rx="6.5" ry="10"/>
+                        <path d="M231.9 244.3a79.3 79.3 0 1 0-158.8 0 79.5 79.5 0 1 0 158.8 0z"/>
+                        </g>
+                        <circle cx="168.5" cy="260.4" r="36.2" fill="#3e4347"/>
+                        <ellipse transform="rotate(-135 182.1 246.7)" cx="182.1" cy="246.7" rx="10" ry="6.5" fill="#fff"/>
+                    </svg>
+                        <svg class="rating-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                <path d="M407.7 352.8a163.9 163.9 0 0 1-303.5 0c-2.3-5.5 1.5-12 7.5-13.2a780.8 780.8 0 0 1 288.4 0c6 1.2 9.9 7.7 7.6 13.2z" fill="#3e4347"/>
+                <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                <g fill="#fff">
+                    <path d="M115.3 339c18.2 29.6 75.1 32.8 143.1 32.8 67.1 0 124.2-3.2 143.2-31.6l-1.5-.6a780.6 780.6 0 0 0-284.8-.6z"/>
+                    <ellipse cx="356.4" cy="205.3" rx="81.1" ry="81"/>
+                </g>
+                <ellipse cx="356.4" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
+                <g fill="#fff">
+                    <ellipse transform="scale(-1) rotate(45 454 -906)" cx="375.3" cy="188.1" rx="12" ry="8.1"/>
+                    <ellipse cx="155.6" cy="205.3" rx="81.1" ry="81"/>
+                </g>
+                <ellipse cx="155.6" cy="205.3" rx="44.2" ry="44.2" fill="#3e4347"/>
+                <ellipse transform="scale(-1) rotate(45 454 -421.3)" cx="174.5" cy="188" rx="12" ry="8.1" fill="#fff"/>
+                </svg>
+                        <svg class="rating-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <circle cx="256" cy="256" r="256" fill="#ffd93b"/>
+                        <path d="M512 256A256 256 0 0 1 56.7 416.7a256 256 0 0 0 360-360c58.1 47 95.3 118.8 95.3 199.3z" fill="#f4c534"/>
+                        <path d="M232.3 201.3c0 49.2-74.3 94.2-74.3 94.2s-74.4-45-74.4-94.2a38 38 0 0 1 74.4-11.1 38 38 0 0 1 74.3 11.1z" fill="#e24b4b"/>
+                        <path d="M96.1 173.3a37.7 37.7 0 0 0-12.4 28c0 49.2 74.3 94.2 74.3 94.2C80.2 229.8 95.6 175.2 96 173.3z" fill="#d03f3f"/>
+                        <path d="M215.2 200c-3.6 3-9.8 1-13.8-4.1-4.2-5.2-4.6-11.5-1.2-14.1 3.6-2.8 9.7-.7 13.9 4.4 4 5.2 4.6 11.4 1.1 13.8z" fill="#fff"/>
+                        <path d="M428.4 201.3c0 49.2-74.4 94.2-74.4 94.2s-74.3-45-74.3-94.2a38 38 0 0 1 74.4-11.1 38 38 0 0 1 74.3 11.1z" fill="#e24b4b"/>
+                        <path d="M292.2 173.3a37.7 37.7 0 0 0-12.4 28c0 49.2 74.3 94.2 74.3 94.2-77.8-65.7-62.4-120.3-61.9-122.2z" fill="#d03f3f"/>
+                        <path d="M411.3 200c-3.6 3-9.8 1-13.8-4.1-4.2-5.2-4.6-11.5-1.2-14.1 3.6-2.8 9.7-.7 13.9 4.4 4 5.2 4.6 11.4 1.1 13.8z" fill="#fff"/>
+                        <path d="M381.7 374.1c-30.2 35.9-75.3 64.4-125.7 64.4s-95.4-28.5-125.8-64.2a17.6 17.6 0 0 1 16.5-28.7 627.7 627.7 0 0 0 218.7-.1c16.2-2.7 27 16.1 16.3 28.6z" fill="#3e4347"/>
+                        <path d="M256 438.5c25.7 0 50-7.5 71.7-19.5-9-33.7-40.7-43.3-62.6-31.7-29.7 15.8-62.8-4.7-75.6 34.3 20.3 10.4 42.8 17 66.5 17z" fill="#e24b4b"/>
+                    </svg>
+                        <svg class="rating-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <g fill="#ffd93b">
+                        <circle cx="256" cy="256" r="256"/>
+                        <path d="M512 256A256 256 0 0 1 56.8 416.7a256 256 0 0 0 360-360c58 47 95.2 118.8 95.2 199.3z"/>
+                        </g>
+                        <path d="M512 99.4v165.1c0 11-8.9 19.9-19.7 19.9h-187c-13 0-23.5-10.5-23.5-23.5v-21.3c0-12.9-8.9-24.8-21.6-26.7-16.2-2.5-30 10-30 25.5V261c0 13-10.5 23.5-23.5 23.5h-187A19.7 19.7 0 0 1 0 264.7V99.4c0-10.9 8.8-19.7 19.7-19.7h472.6c10.8 0 19.7 8.7 19.7 19.7z" fill="#e9eff4"/>
+                        <path d="M204.6 138v88.2a23 23 0 0 1-23 23H58.2a23 23 0 0 1-23-23v-88.3a23 23 0 0 1 23-23h123.4a23 23 0 0 1 23 23z" fill="#45cbea"/>
+                        <path d="M476.9 138v88.2a23 23 0 0 1-23 23H330.3a23 23 0 0 1-23-23v-88.3a23 23 0 0 1 23-23h123.4a23 23 0 0 1 23 23z" fill="#e84d88"/>
+                        <g fill="#38c0dc">
+                        <path d="M95.2 114.9l-60 60v15.2l75.2-75.2zM123.3 114.9L35.1 203v23.2c0 1.8.3 3.7.7 5.4l116.8-116.7h-29.3z"/>
+                        </g>
+                        <g fill="#d23f77">
+                        <path d="M373.3 114.9l-66 66V196l81.3-81.2zM401.5 114.9l-94.1 94v17.3c0 3.5.8 6.8 2.2 9.8l121.1-121.1h-29.2z"/>
+                        </g>
+                        <path d="M329.5 395.2c0 44.7-33 81-73.4 81-40.7 0-73.5-36.3-73.5-81s32.8-81 73.5-81c40.5 0 73.4 36.3 73.4 81z" fill="#3e4347"/>
+                        <path d="M256 476.2a70 70 0 0 0 53.3-25.5 34.6 34.6 0 0 0-58-25 34.4 34.4 0 0 0-47.8 26 69.9 69.9 0 0 0 52.6 24.5z" fill="#e24b4b"/>
+                        <path d="M290.3 434.8c-1 3.4-5.8 5.2-11 3.9s-8.4-5.1-7.4-8.7c.8-3.3 5.7-5 10.7-3.8 5.1 1.4 8.5 5.3 7.7 8.6z" fill="#fff" opacity=".2"/>
+                    </svg>
+                    </div>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div>
+                        <a href="#" data-menu="menu-modal-edit-1" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-gray-light mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon points="0 0 24 0 24 24 0 24"/>
+        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
+        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
+    </g>
+</svg>
+GERİ
+                        </a>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" id="userContactUpdateButton2" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4">DEVAM ET</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="menu-modal-edit-3" class="menu menu-box-bottom menu-box-detached rounded-m">
+            <div class="menu-title mt-n1">
+                <h1>Kişi Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="content mb-0 mt-0">
+                <h5 class="color-theme opacity-40 ps-1">Potansiyel</h5>
+                <div class="divider mb-3 mt-2"></div>
+                <p class="mb-2 text-center">Kişinizin, müşteri olma potansiyelini kırmızıdan yeşile seçenelerinden belirleyebilirsiniz</p>
+
+                <div class="custom-radios my-3 mb-4">
+                    <div>
+                      <input type="radio" id="edit-color-1" class="color-1" name="contactEditColor" value="0">
+                      <label for="edit-color-1">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                    
+                    <div>
+                      <input type="radio" id="edit-color-2" class="color-2" name="contactEditColor" value="1">
+                      <label for="edit-color-2">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                    
+                    <div>
+                      <input type="radio" id="edit-color-3" class="color-3" name="contactEditColor" value="2">
+                      <label for="edit-color-3">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                  
+                    <div>
+                      <input type="radio" id="edit-color-4" class="color-4" name="contactEditColor" value="3">
+                      <label for="edit-color-4">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                  
+                    <div>
+                      <input type="radio" id="edit-color-5" class="color-5" name="contactEditColor" value="4">
+                      <label for="edit-color-5">
+                        <span>
+                          <img src="images/check-icon.svg" alt="" />
+                        </span>
+                      </label>
+                    </div>
+                </div>
+                <!-- <div id="previewEditContact" class="mb-4"></div> -->
+                
+                <div class="d-flex">
+                    <div>
+                        <a href="#" data-menu="menu-modal-edit-2" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-gray-light mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon points="0 0 24 0 24 24 0 24"/>
+        <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-12.000000, -12.000000) " x="11" y="5" width="2" height="14" rx="1"/>
+        <path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/>
+    </g>
+</svg>
+GERİ
+                        </a>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" id="userContactUpdateButton3" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-4"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon points="0 0 24 0 24 24 0 24"/>
+        <path d="M9.26193932,16.6476484 C8.90425297,17.0684559 8.27315905,17.1196257 7.85235158,16.7619393 C7.43154411,16.404253 7.38037434,15.773159 7.73806068,15.3523516 L16.2380607,5.35235158 C16.6013618,4.92493855 17.2451015,4.87991302 17.6643638,5.25259068 L22.1643638,9.25259068 C22.5771466,9.6195087 22.6143273,10.2515811 22.2474093,10.6643638 C21.8804913,11.0771466 21.2484189,11.1143273 20.8356362,10.7474093 L17.0997854,7.42665306 L9.26193932,16.6476484 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(14.999995, 11.000002) rotate(-180.000000) translate(-14.999995, -11.000002) "/>
+        <path d="M4.26193932,17.6476484 C3.90425297,18.0684559 3.27315905,18.1196257 2.85235158,17.7619393 C2.43154411,17.404253 2.38037434,16.773159 2.73806068,16.3523516 L11.2380607,6.35235158 C11.6013618,5.92493855 12.2451015,5.87991302 12.6643638,6.25259068 L17.1643638,10.2525907 C17.5771466,10.6195087 17.6143273,11.2515811 17.2474093,11.6643638 C16.8804913,12.0771466 16.2484189,12.1143273 15.8356362,11.7474093 L12.0997854,8.42665306 L4.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.999995, 12.000002) rotate(-180.000000) translate(-9.999995, -12.000002) "/>
+    </g>
+</svg>
+KAYDET</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-modal-contact-detail3" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Profil Özeti</h1>
+                <!-- <p class="color-highlight">Detaylı İnceleme Yapabilirsiniz</p> -->
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+                <div class="row mb-0">
+                    <div class="col-3">
+                        <img src="images/pictures/faces/1s.png" width="80" class="rounded-xl">
+                    </div>
+                    <div class="col-9 ps-4">
+                        <div class="d-flex">
+                            <div>
+                                <p class="font-700 color-theme">İsim</p>
+                            </div>
+                            <div class="ms-auto">
+                                <p>Sinan Hoçur</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div>
+                                <p class="font-700 color-theme">Şirket</p>
+                            </div>
+                            <div class="ms-auto">
+                                <p>Goviva</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div>
+                                <p class="font-700 color-theme">Kariyer</p>
+                            </div>
+                            <div class="ms-auto">
+                                <p>Full Stack Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider mt-3 mb-3"></div>
+                <div class="row mb-0">
+                    <div class="divider w-100 mt-2 mb-2"></div>
+                    <div class="col-6">
+                        <h4 class="font-14 mt-1">Kazanç</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="font-14 text-end mt-1">$530.24</h4>
+                    </div>
+                    <div class="divider w-100 mt-2 mb-2"></div>
+                    <div class="col-6">
+                        <h4 class="font-14 mt-1">Email</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="font-14 text-end mt-1">shocur@gmail.com</h4>
+                    </div>
+                    <div class="divider w-100 mt-2 mb-2"></div>
+                    <div class="col-6">
+                        <h4 class="font-14 mt-1">Statü</h4>
+                    </div>
+                    <div class="col-6">
+                        <h4 class="font-14 text-end mt-1 color-green-dark">Doğrulanmış</h4>
+                    </div>
+                    <div class="divider w-100 mt-2 mb-3"></div>
+                    <div class="col-12">
+                        
+                        <div class="d-flex">
+                            <div>
+                                <a href="#" id="userPurposeStatusButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-red-light mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g transform="translate(12.000000, 12.000000) rotate(-45.000000) translate(-12.000000, -12.000000) translate(4.000000, 4.000000)" fill="#000000">
+                                            <rect x="0" y="7" width="16" height="2" rx="1"></rect>
+                                            <rect transform="translate(8.000000, 8.000000) rotate(-270.000000) translate(-8.000000, -8.000000) " x="0" y="7" width="16" height="2" rx="1"></rect>
+                                        </g>
+                                    </g>
+                                </svg>
+                                İPTAL ET
+                                </a>
+                            </div>
+                            <div class="ms-auto">
+                                <a href="#" id="userPurposeEditButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24"/>
+                                            <path d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.701953, 10.701953) rotate(-135.000000) translate(-14.701953, -10.701953) "/>
+                                            <path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        </g>
+                                    </svg>
+                                    DÜZENLE
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-new-contact-modal" class="menu menu-box-modal menu-box-detached">
+            <div class="content text-center py-4">
+                <div class="icon icon-xl icon-ncoach">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"> <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <rect x="0" y="0" width="24" height="24"/> <path d="M18,2 L20,2 C21.6568542,2 23,3.34314575 23,5 L23,19 C23,20.6568542 21.6568542,22 20,22 L18,22 L18,2 Z" fill="#004b81" opacity="0.3"/> <path d="M5,2 L17,2 C18.6568542,2 20,3.34314575 20,5 L20,19 C20,20.6568542 18.6568542,22 17,22 L5,22 C4.44771525,22 4,21.5522847 4,21 L4,3 C4,2.44771525 4.44771525,2 5,2 Z M12,11 C13.1045695,11 14,10.1045695 14,9 C14,7.8954305 13.1045695,7 12,7 C10.8954305,7 10,7.8954305 10,9 C10,10.1045695 10.8954305,11 12,11 Z M7.00036205,16.4995035 C6.98863236,16.6619875 7.26484009,17 7.4041679,17 C11.463736,17 14.5228466,17 16.5815,17 C16.9988413,17 17.0053266,16.6221713 16.9988413,16.5 C16.8360465,13.4332455 14.6506758,12 11.9907452,12 C9.36772908,12 7.21569918,13.5165724 7.00036205,16.4995035 Z" fill="#004b81"/> </g> </svg>
+                </div>
+                <h3 class="pt-4 mb-0">Hemen Başla</h3>
+                <p>
+                    Kişilerinizi listenize ekleyerek kolayca ulaşabilirsiniz.
+                </p>
+                <a href="#" data-menu="menu-modal-add-1" class="btn btn-center-l btn-m bg-fade-blue-light rounded-sm text-uppercase font-700 mb-3">YENİ KİŞİ EKLE</a>
+            </div>
+        </div>
+        
+        <div id="menu-purpose-filter" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Kişi Listesi Sırala</h1><a href="#" class="close-menu"><i
+                        class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-3"></div>
+            <div class="content mb-0">
+                <div>
+                    <div class="col-12">
+                        <div class="inp ut-style has-borders no-icon mb-4">
+                            <!-- <label for="userContactFilterType" class="color-highlight">Kriter Seç</label> -->
+                            <select id="userContactFilterType" class="select2">
+                                <option value="" disabled="" selected="">Bir Kriter Seçin</option>
+                                <option value="rating">Yakınlığa Göre</option>
+                                <option value="color">Potansiyele Göre</option>
+                                <option value="date">Ekleme Tarihine Göre</option>
+                            </select>
+                            <!-- <span><i class="fa fa-chevron-down"></i></span>
+                            <i class="fa fa-check disabled valid color-green-dark"></i>
+                            <i class="fa fa-check disabled invalid color-red-dark"></i>
+                            <em></em> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><a href="#" id="userContactFilterButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light">Sırala</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <include file="includes/menu.html"></include>
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/kisilistesi.js"></script>
+    <script src="scripts/jquery-3.5.1.min.js"></script>
+
+    <script src="scripts/select2.min.js"></script>
+    <script>
+      setTimeout(() => {
+        $(function() {
+        $(".select2").select2({ minimumResultsForSearch: -1});
+      });
+      }, 1000);
+    </script>
+</body>
+
+</html>

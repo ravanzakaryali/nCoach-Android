@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+        
+        // if (window.location.protocol !== "file:") {
+        //         const talyia = {containers: ["#page"], cache: false, animateHistoryBrowsing: false, plugins: [new SwupHeadPlugin], linkSelector: 'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'};
+        //         const yarisleidy = new Swup(talyia);
+        //         document.addEventListener("swup:pageView", kilie => {
+                    
+        //             console.log("girdi2",1);
+        //         });
+        //     }
+            // document.addEventListener("swup:pageView", kilie => {
+                
+            // });
+            // swup.on('pageView', function() {
+            //     console.log("girdi2",2);
+            // });
+            
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default" id="takim">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-c lear-medium">
+            <div class="content notch-clear">
+                <div class="d-flex pt-0">
+                    <div class="align-self-center me-auto">
+                        <strong class="text-upper case opacity-60 font-12">Genelogy</strong>
+                        <h1 class="mt-n2 font-24" get-data="user.name"></h1>
+                    </div>
+                    <div class="align-self-center ms-auto">
+                        <a class="d-block" data-menu="menu-events" href="#"><img class="img-fluid shadow-xl rounded-circle" src="images/profile.png" data-load="userImage" width="52"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="body genealogy-body genealogy-scroll">
+                <div class="genealogy-tree">
+                    <ul>
+                        <li data-id="">
+                            <a href="javascript:void(0);">
+                                <div class="member-view-box">
+                                    <div class="member-image">
+                                        <img src="images/profile.png" class="mx-auto shadow-xl rounded-circle over-card" data-load="userImage" alt="">
+                                        <div class="member-details">
+                                            <h3 get-data="user.name"></h3>
+                                            <div>
+                                                <span class="font-12 opacity-80 mb-0"></span>
+                                                <h2 class="mt-0 font-14 color-red-dark"></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul class="active empty"  id="genealogy-list">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+                
+        </div>
+        
+        <div id="new-user-list" data-menu-height="310" class="menu menu-box-bottom menu-box-detached rounded-m"style="overflow: hidden;">
+
+            <div class="position-fixed mt-n1 px-3" style="z-index: 999;width: 100%;">
+                <div class="menu-title">
+                    <h1 class="ps-1">Yeni Kişi Ekle</h1>
+                    <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+                </div>
+                <div class="search-box bg-theme color-theme rounded-m shadow-l mt-3 mb-2">
+                    <div class="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24"></rect>
+                                <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#0cb6ea" fill-rule="nonzero" opacity="0.3"></path>
+                                <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#004b81" fill-rule="nonzero"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <input class="border-0" data-team-search="" placeholder="Takım içinde ara.." type="text"> <a class="clear-search disabled mt-0" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <circle fill="#0cb6ea" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#004b81"></path>
+                        </g>
+                    </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="content mb-0" style="margin-top:110px;overflow-y: scroll;height: 100%;padding: 0px 5px;height: 200px;padding: 5px 15px;margin-left: 0;margin-right: 0;">
+                <!-- <h5 class="color-theme opacity-40 ps-1">Kişisel Bilgiler</h5>
+                <div class="divider mb-3 mt-2"></div> -->
+                
+                <div id="userList" class="listActiveEffect listDivider rowReset"></div>
+
+                
+            </div>
+        </div>
+        
+
+        <include file="includes/menu.html"></include>
+        <!-- -->
+    
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/genealogy.js"></script>
+</body>
+
+</html>

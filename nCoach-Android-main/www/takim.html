@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+        
+        // if (window.location.protocol !== "file:") {
+        //         const talyia = {containers: ["#page"], cache: false, animateHistoryBrowsing: false, plugins: [new SwupHeadPlugin], linkSelector: 'a:not(.external-link):not(.default-link):not([href^="https"]):not([href^="http"]):not([data-gallery])'};
+        //         const yarisleidy = new Swup(talyia);
+        //         document.addEventListener("swup:pageView", kilie => {
+                    
+        //             console.log("girdi2",1);
+        //         });
+        //     }
+            // document.addEventListener("swup:pageView", kilie => {
+                
+            // });
+            // swup.on('pageView', function() {
+            //     console.log("girdi2",2);
+            // });
+            
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default" id="takim">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-c lear-medium">
+            <div class="content notch-clear">
+                <!-- <div class="d-flex pt-0">
+                <div class="align-self-center me-auto">
+                    <strong class="text-upper case opacity-60 font-12">Takımım</strong>
+                    <h1 class="mt-n2 font-24" get-data="user.name"></h1>
+                </div>
+                <div class="align-self-center ms-auto">
+                    <a class="d-block" data-menu="menu-events" href="#"><img class="img-fluid shadow-xl rounded-circle" src="images/profile.png" data-load="userImage" width="52"></a>
+                </div>
+                </div> -->
+            </div>
+            <div class="content mt-n1 mb-3">
+                <h1>Takım Arkadaşlarını Ara</h1>
+                <!-- <label for="">Takım Arkadaşlarınızı Ad Soyad, Email ve Telefonla Arayın.</label> -->
+                <div class="search-box bg-theme color-theme rounded-m shadow-l">
+                    <div class="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24"></rect>
+                                <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#0cb6ea" fill-rule="nonzero" opacity="0.3"></path>
+                                <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#004b81" fill-rule="nonzero"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <input class="border-0" data-team-search="" placeholder="Ad Soyad, Email veya Telefon ile ara.." type="text"> <a class="clear-search disabled mt-0" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                            <circle fill="#0cb6ea" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                            <path d="M12.0355339,10.6213203 L14.863961,7.79289322 C15.2544853,7.40236893 15.8876503,7.40236893 16.2781746,7.79289322 C16.6686989,8.18341751 16.6686989,8.81658249 16.2781746,9.20710678 L13.4497475,12.0355339 L16.2781746,14.863961 C16.6686989,15.2544853 16.6686989,15.8876503 16.2781746,16.2781746 C15.8876503,16.6686989 15.2544853,16.6686989 14.863961,16.2781746 L12.0355339,13.4497475 L9.20710678,16.2781746 C8.81658249,16.6686989 8.18341751,16.6686989 7.79289322,16.2781746 C7.40236893,15.8876503 7.40236893,15.2544853 7.79289322,14.863961 L10.6213203,12.0355339 L7.79289322,9.20710678 C7.40236893,8.81658249 7.40236893,8.18341751 7.79289322,7.79289322 C8.18341751,7.40236893 8.81658249,7.40236893 9.20710678,7.79289322 L12.0355339,10.6213203 Z" fill="#004b81"></path>
+                        </g>
+                    </svg>
+                    </a>
+                </div>
+                <div class="search-results disabled-search-list mt-3 shadow-l">
+                        
+                    <div class="card card-style p-0 m-0">
+                        <div class="content">
+                            <div class="d-flex mb-3">
+                                <div class="align-self-center">
+                                    <h3 class="font-700 mb-0">Arama Sonuçları</h3>
+                                </div>
+                            </div>
+                            <div class="divider mt-0 mb-3"></div>
+                            <div id="searchList" class="listActiveEffect listDivider rowReset"></div>
+                        
+                        </div>
+                    </div>
+                <!-- <div class="card card-style p-0 m-0">
+                    <div class="content">
+                    </div>
+                </div> -->
+                </div>
+            </div>
+            
+            <!-- <div class="content mb-0">
+                <div class="row mb-0">
+                    <div class="col-6 pe-1">
+                        <a class="card-style d-block bg-theme py-3 mx-0 mb-3 d-flex justify-content-center align-items-center" data-menu="menu-transaction-transfer" href="#">
+                            <span class="color-theme font-700 font-16 text-uppercase d-fl ex justify-content-center px-3 align-self-center icon-xxs icon-ncoach">
+                                Takımım
+                                <svg xmlns="http://www.w3.org/2000/svg" class="color-green-dark mt-n1 flot-end p-0" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <polygon points="0 0 24 0 24 24 0 24"/>
+                                        <path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-6 ps-1">
+                        <a class="card-style d-block bg-theme py-3 mx-0 mb-3 d-flex justify-content-center align-items-center" data-menu="menu-transaction-request" href="#">
+                            <span class="color-theme font-700 font-16 text-uppercase d-fl ex justify-content-center align-self-center px-3 icon-xxs icon-ncoach">
+                                Genelogy
+                                <svg xmlns="http://www.w3.org/2000/svg" class="color-green-dark mt-n1 flot-end p-0" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M6,7 C7.1045695,7 8,6.1045695 8,5 C8,3.8954305 7.1045695,3 6,3 C4.8954305,3 4,3.8954305 4,5 C4,6.1045695 4.8954305,7 6,7 Z M6,9 C3.790861,9 2,7.209139 2,5 C2,2.790861 3.790861,1 6,1 C8.209139,1 10,2.790861 10,5 C10,7.209139 8.209139,9 6,9 Z" fill="#000000" fill-rule="nonzero"/>
+                                        <path d="M7,11.4648712 L7,17 C7,18.1045695 7.8954305,19 9,19 L15,19 L15,21 L9,21 C6.790861,21 5,19.209139 5,17 L5,8 L5,7 L7,7 L7,8 C7,9.1045695 7.8954305,10 9,10 L15,10 L15,12 L9,12 C8.27142571,12 7.58834673,11.8052114 7,11.4648712 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        <path d="M18,22 C19.1045695,22 20,21.1045695 20,20 C20,18.8954305 19.1045695,18 18,18 C16.8954305,18 16,18.8954305 16,20 C16,21.1045695 16.8954305,22 18,22 Z M18,24 C15.790861,24 14,22.209139 14,20 C14,17.790861 15.790861,16 18,16 C20.209139,16 22,17.790861 22,20 C22,22.209139 20.209139,24 18,24 Z" fill="#000000" fill-rule="nonzero"/>
+                                        <path d="M18,13 C19.1045695,13 20,12.1045695 20,11 C20,9.8954305 19.1045695,9 18,9 C16.8954305,9 16,9.8954305 16,11 C16,12.1045695 16.8954305,13 18,13 Z M18,15 C15.790861,15 14,13.209139 14,11 C14,8.790861 15.790861,7 18,7 C20.209139,7 22,8.790861 22,11 C22,13.209139 20.209139,15 18,15 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+            
+            <div class="card card-style" id="">
+                <div class="content mb-0 mt-2 pt-2 pb-2">
+                    
+                    <div class="d-flex mb-3">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Takımım</h1>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                            
+                            <a href="#" data-menu="menu-purpose-filter" class="icon icon-s gradient-blue rounded-m me-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000"/>
+                                    </g>
+                                </svg>
+                            </a>
+                            <a href="genealogy.html" class="icon icon-s gradient-blue rounded-m">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M6,7 C7.1045695,7 8,6.1045695 8,5 C8,3.8954305 7.1045695,3 6,3 C4.8954305,3 4,3.8954305 4,5 C4,6.1045695 4.8954305,7 6,7 Z M6,9 C3.790861,9 2,7.209139 2,5 C2,2.790861 3.790861,1 6,1 C8.209139,1 10,2.790861 10,5 C10,7.209139 8.209139,9 6,9 Z" fill="#000000" fill-rule="nonzero"/>
+                                        <path d="M7,11.4648712 L7,17 C7,18.1045695 7.8954305,19 9,19 L15,19 L15,21 L9,21 C6.790861,21 5,19.209139 5,17 L5,8 L5,7 L7,7 L7,8 C7,9.1045695 7.8954305,10 9,10 L15,10 L15,12 L9,12 C8.27142571,12 7.58834673,11.8052114 7,11.4648712 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                        <path d="M18,22 C19.1045695,22 20,21.1045695 20,20 C20,18.8954305 19.1045695,18 18,18 C16.8954305,18 16,18.8954305 16,20 C16,21.1045695 16.8954305,22 18,22 Z M18,24 C15.790861,24 14,22.209139 14,20 C14,17.790861 15.790861,16 18,16 C20.209139,16 22,17.790861 22,20 C22,22.209139 20.209139,24 18,24 Z" fill="#000000" fill-rule="nonzero"/>
+                                        <path d="M18,13 C19.1045695,13 20,12.1045695 20,11 C20,9.8954305 19.1045695,9 18,9 C16.8954305,9 16,9.8954305 16,11 C16,12.1045695 16.8954305,13 18,13 Z M18,15 C15.790861,15 14,13.209139 14,11 C14,8.790861 15.790861,7 18,7 C20.209139,7 22,8.790861 22,11 C22,13.209139 20.209139,15 18,15 Z" fill="#000000" fill-rule="nonzero"/>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="divider mt-0 mb-2"></div>
+                    <div id="teamList" class="listActiveEffect listDivider rowReset"></div>
+                </div>
+            </div>
+            <!-- <div class="d-flex px-3 pb-3">
+                <div class="align-self-center">
+                <h4 class="mb-0">Nearby Events</h4>
+                <p class="mt-n1 mb-0">Happening close to you</p>
+                </div>
+                <div class="align-self-center ms-auto">
+                <a class="font-12" href="#">View All</a>
+                </div>
+            </div> -->
+        </div>
+
+
+        <div id="menu-purpose-filter" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Takım Listesi Sırala</h1>
+                <p class="color-highlight">Bir Kriter Seçin</p><a href="#" class="close-menu"><i
+                        class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-3"></div>
+            <div class="content mb-0">
+                <div>
+                    <div class="col-12">
+                        <div class="input-style has-borders no-icon mb-4">
+                            <label for="userContactFilterType" class="color-highlight">Kriter Seç</label>
+                            <select id="userContactFilterType">
+                                <option value="" disabled="" selected="">Bir Kriter Seçin</option>
+                                <option value="rating">İsime Göre</option>
+                                <option value="date">Ekleme Tarihine Göre</option>
+                            </select>
+                            <span><i class="fa fa-chevron-down"></i></span>
+                            <i class="fa fa-check disabled valid color-green-dark"></i>
+                            <i class="fa fa-check disabled invalid color-red-dark"></i>
+                            <em></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12"><a href="#" id="userContactFilterButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light">Sırala</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-popup-profil" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Profil Özeti</h1>
+                <!-- <p class="color-highlight">Detaylı İnceleme Yapabilirsiniz</p> -->
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+                
+            </div>
+        </div>
+        <include file="includes/menu.html"></include>
+        <!-- -->
+    
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/takim.js"></script>
+</body>
+
+</html>

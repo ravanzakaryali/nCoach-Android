@@ -1,0 +1,20 @@
+{
+  "android": {
+      "debug": {
+          "keystore": "./my-release-key.keystore",
+          "storePassword": "Digital?34.07",
+          "alias": "babilsoftinc",
+          "password" : "Digital?34.07",
+          "keystoreType": "",
+          "packageType": "apk"
+      },
+      "release": {
+          "keystore": "./my-release-key.keystore",
+          "storePassword": "Digital?34.07",
+          "alias": "babilsoftinc",
+          "password" : "Digital?34.07",
+          "keystoreType": "",
+          "packageType": "bundle"
+      }
+  }
+}

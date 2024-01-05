@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+    </script>
+</head>
+
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-clear-medium">
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="align-self-center">
+                            <h1 class="font-700 mb-0">Notlarım</h1>
+                        </div>
+                        <div class="align-self-center ms-auto">
+                            
+                        </div>
+                    </div>
+                    <p class="mb-0 pt-2">
+                        Sizin için hazırladığımız araçlar ile iş ortamınızı daha profesyonelce yönetin
+                    </p>
+                </div>
+
+                <include file="includes/agenda.html"></include>
+                
+            </div>
+            <div class="content card card-style p-3">
+                <div class="d-flex mb-3">
+                    <div class="align-self-center">
+                        <h1 class="font-700 mb-0">Not Listem</h1>
+                    </div>
+                    <div class="align-self-center ms-auto">
+                        <a href="#" data-menu="menu-modal-search" class="icon icon-s gradient-blue rounded-m me-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                    <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero"/>
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="#" data-menu="menu-modal-add" class="icon icon-s gradient-blue rounded-m">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                    <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="divider mt-0 mb-2"></div>
+                <div id="userNoteList" class="listActiveEffect listDivider rowReset"></div>
+            </div>
+        </div>
+
+
+        <include file="includes/menu.html"></include> 
+        
+        <div id="menu-modal-search" class="menu menu-box-bottom menu-box-detached rounded-m" style="display: block;">
+            <div class="menu-title mt-n1">
+                <h1>Notlarda Ara</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <!-- <div class="divider divider-margins mt-3 mb-3"></div> -->
+            <div class="content mb-0 mt-3">
+                <div class="input-style has-borders no-icon mb-4">
+                    <input type="name" class="form-control" id="userNoteSearchText" placeholder="Arama Kelimesi" />
+                    <label for="userNoteSearchText" class="color-blue-dark font-10">Arama Kelimesi</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <a href="#" id="userNoteSearchButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Ara</a>
+            </div>
+        </div>
+        <div id="menu-modal-add" class="menu menu-box-bottom menu-box-detached rounded-m" style="display: block;">
+            <div class="menu-title mt-n1">
+                <h1>Not Ekle</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <!-- <div class="divider divider-margins mt-3 mb-3"></div> -->
+            <div class="content mb-0 mt-3">
+                <div class="input-style has-borders no-icon mb-4">
+                    <input type="name" class="form-control" id="userNoteAddTitle" placeholder="Not Başlığı" />
+                    <label for="userNoteAddTitle" class="color-blue-dark font-10">Not Başlığı</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders no-icon mb-4">
+                    <textarea id="userNoteAddNote" placeholder="Notunuz" maxlength="500"></textarea>
+                    <label for="userNoteAddNote" class="color-blue-dark font-10">Notunuz</label>
+                    <em></em>
+                    <!-- <label for="form2ac" class="color-blue-dark font-10">Your Email</label> -->
+                    <!-- <label for="form7" class="color-highlight">Hedefiniz...</label> -->
+                </div>
+                <a href="#" id="userNoteAddButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Kaydet</a>
+            </div>
+        </div>
+        <div id="menu-modal-note-detail" class="menu menu-box-bottom menu-box-detached rounded-m" style="display: block;">
+            <div class="menu-title mt-n1">
+                <h1>Not Detayı</h1>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-0"></div>
+            <div class="content mb-0 mt-0">
+                <div class="input-style has-borders no-icon mb-4">
+                    <input type="name" class="form-control" id="userNoteDetailTitle" placeholder="" />
+                    <label for="userNoteDetailTitle" class="color-blue-dark font-10">Not Başlığı</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders no-icon mb-4">
+                    <textarea id="userNoteDetailNote" placeholder="Notunuz" maxlength="500"></textarea>
+                    <label for="userNoteDetailNote" class="color-blue-dark font-10">Notunuz</label>
+                    <em></em>
+                    <!-- <label for="form2ac" class="color-blue-dark font-10">Your Email</label> -->
+                    <!-- <label for="form7" class="color-highlight">Hedefiniz...</label> -->
+                </div>
+                <input type="hidden" id="userNoteId">
+                <div class="d-flex">
+                    <div>
+                        <a href="#" id="userNoteRemoveButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-red-light mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>
+                                    <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                                </g>
+                            </svg>
+                            SİL</a>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" id="userNoteSaveButton" class="btn btn-full btn-m font-600 font-14 rounded-sm text-uppercase bg-fade-blue-light mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24"/>
+                                    <circle fill="#fff" opacity="0.3" cx="12" cy="12" r="10"/>
+                                    <path d="M16.7689447,7.81768175 C17.1457787,7.41393107 17.7785676,7.39211077 18.1823183,7.76894473 C18.5860689,8.1457787 18.6078892,8.77856757 18.2310553,9.18231825 L11.2310553,16.6823183 C10.8654446,17.0740439 10.2560456,17.107974 9.84920863,16.7592566 L6.34920863,13.7592566 C5.92988278,13.3998345 5.88132125,12.7685345 6.2407434,12.3492086 C6.60016555,11.9298828 7.23146553,11.8813212 7.65079137,12.2407434 L10.4229928,14.616916 L16.7689447,7.81768175 Z" fill="#fff" fill-rule="nonzero"/>
+                                </g>
+                            </svg> Kaydet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/ajanda.js"></script>
+</body>
+
+</html>

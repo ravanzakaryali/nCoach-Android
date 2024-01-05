@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "152887468164",
+    "project_id": "ncoach",
+    "storage_bucket": "ncoach.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152887468164:android:0e41a76fec899616f962d1",
+        "android_client_info": {
+          "package_name": "org.ncoach.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152887468164-dhod0mlv2hnjp1be2g2ellj5s4iq87jq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYXMJqEnJpfE3Xf1_J4l3NfXfwudOvfps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152887468164-dhod0mlv2hnjp1be2g2ellj5s4iq87jq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,520 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="styles/select2.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content">
+            <div class="content mt-4">
+                <div class="d-flex">
+                    <div class="align-self-center">
+                        <p class="mb-n2 font-12"></p>
+                        <h1>Kazançlarım</h1>
+                        <p class="mb-n1 font-400 font-12 opacity-50" get-data="user.name"></p>
+                    </div>
+                    <div class="align-self-center ms-auto">
+                        <a href="#" data-menu="menu-add-earning"
+                            class="icon icon-m gradient-blue color-white rounded-m shadow-l rounded-m ms-2">
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <rect x="0" y="0" width="24" height="24"></rect>
+                                  <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"></circle>
+                                  <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"></path>
+                              </g>
+                          </svg>
+                          </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- <div class="card card-style">
+               <div class="content mb-0 mt-2 pt-2 pb-2">
+                   <div class="d-flex pb-2 mb-1">
+                       <div class="align-self-center">
+                           <h4 class="font-700 font-18 mb-0">Kazanç Listesi</h4>
+                       </div>
+                   </div>
+                   <div class="divider mb-2"></div>
+               </div>
+           </div> -->
+           <div id="userReceiptList"></div>
+            <!-- <div class="splide single-slider slider-no-arrows slider-no-dots visible-slider" id="single-slider-1">
+                <div class="splide__track">
+                    <div class="splide__list">
+                        
+                        
+
+                    </div>
+                </div>
+            </div> -->
+            <div class="content">
+              
+                <div id="setFilterType" class="d-flex text-center px-2 customTabButtons">
+                    <div class="me-auto">
+                        <a href="#" onclick="setFilterType('global')" class="active icon color-green shadow-l rounded-m icon-ncoach icon-m p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <rect x="0" y="0" width="24" height="24"/>
+                                  <path d="M13,18.9450712 L13,20 L14,20 C15.1045695,20 16,20.8954305 16,22 L8,22 C8,20.8954305 8.8954305,20 10,20 L11,20 L11,18.9448245 C9.02872877,18.7261967 7.20827378,17.866394 5.79372555,16.5182701 L4.73856106,17.6741866 C4.36621808,18.0820826 3.73370941,18.110904 3.32581341,17.7385611 C2.9179174,17.3662181 2.88909597,16.7337094 3.26143894,16.3258134 L5.04940685,14.367122 C5.46150313,13.9156769 6.17860937,13.9363085 6.56406875,14.4106998 C7.88623094,16.037907 9.86320756,17 12,17 C15.8659932,17 19,13.8659932 19,10 C19,7.73468744 17.9175842,5.65198725 16.1214335,4.34123851 C15.6753081,4.01567657 15.5775721,3.39010038 15.903134,2.94397499 C16.228696,2.49784959 16.8542722,2.4001136 17.3003976,2.72567554 C19.6071362,4.40902808 21,7.08906798 21,10 C21,14.6325537 17.4999505,18.4476269 13,18.9450712 Z" fill="#000000" fill-rule="nonzero"/>
+                                  <circle fill="#000000" opacity="0.3" cx="12" cy="10" r="6"/>
+                              </g>
+                          </svg>
+                          </a>
+                        <span class="font-12 font-600 color-theme d-block">Global</span>
+                    </div>
+                    <div class="m-auto">
+                        <a href="#" onclick="setFilterType('incountry')" class="icon color-blue shadow-l rounded-m icon-ncoach icon-m p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <rect x="0" y="0" width="24" height="24"/>
+                                  <path d="M3.5,3 L5,3 L5,19.5 C5,20.3284271 4.32842712,21 3.5,21 L3.5,21 C2.67157288,21 2,20.3284271 2,19.5 L2,4.5 C2,3.67157288 2.67157288,3 3.5,3 Z" fill="#000000"/>
+                                  <path d="M6.99987583,2.99995344 L19.754647,2.99999303 C20.3069317,2.99999474 20.7546456,3.44771138 20.7546439,3.99999613 C20.7546431,4.24703684 20.6631995,4.48533385 20.497938,4.66895776 L17.5,8 L20.4979317,11.3310353 C20.8673908,11.7415453 20.8341123,12.3738351 20.4236023,12.7432941 C20.2399776,12.9085564 20.0016794,13 19.7546376,13 L6.99987583,13 L6.99987583,2.99995344 Z" fill="#000000" opacity="0.3"/>
+                              </g>
+                          </svg></a>
+                        <span class="font-12 font-600 color-theme d-block">Ülke</span>
+                    </div>
+                    <div class="ms-auto">
+                        <a href="#" onclick="setFilterType('incompany')" class="icon shadow-l rounded-m icon-ncoach icon-m p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <rect x="0" y="0" width="24" height="24"/>
+                                  <path d="M5.84026576,8 L18.1597342,8 C19.1999115,8 20.0664437,8.79732479 20.1528258,9.83390904 L20.8194924,17.833909 C20.9112219,18.9346631 20.0932459,19.901362 18.9924919,19.9930915 C18.9372479,19.9976952 18.8818364,20 18.8264009,20 L5.1735991,20 C4.0690296,20 3.1735991,19.1045695 3.1735991,18 C3.1735991,17.9445645 3.17590391,17.889153 3.18050758,17.833909 L3.84717425,9.83390904 C3.93355627,8.79732479 4.80008849,8 5.84026576,8 Z M10.5,10 C10.2238576,10 10,10.2238576 10,10.5 L10,11.5 C10,11.7761424 10.2238576,12 10.5,12 L13.5,12 C13.7761424,12 14,11.7761424 14,11.5 L14,10.5 C14,10.2238576 13.7761424,10 13.5,10 L10.5,10 Z" fill="#000000"/>
+                                  <path d="M10,8 L8,8 L8,7 C8,5.34314575 9.34314575,4 11,4 L13,4 C14.6568542,4 16,5.34314575 16,7 L16,8 L14,8 L14,7 C14,6.44771525 13.5522847,6 13,6 L11,6 C10.4477153,6 10,6.44771525 10,7 L10,8 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                              </g>
+                          </svg>
+                        </a>
+                        <span class="font-12 font-600 color-theme d-block">Şirket</span>
+                    </div>
+                    <div class="m-auto">
+                        <a href="#" onclick="setFilterType('inteam')" class="icon color-red shadow-l rounded-m icon-ncoach icon-m p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="cus tomSvg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                  <polygon points="0 0 24 0 24 24 0 24"/>
+                                  <path d="M18,14 C16.3431458,14 15,12.6568542 15,11 C15,9.34314575 16.3431458,8 18,8 C19.6568542,8 21,9.34314575 21,11 C21,12.6568542 19.6568542,14 18,14 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                  <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+                              </g>
+                          </svg>
+                        </a>
+                        <span class="font-12 font-600 color-theme d-block">Takım</span>
+                    </div>
+                </div>
+                <div id="setListType" class="d-flex text-center px-2 mt-2 customTabButtons customTabButtons2">
+                    <div class="col-4 text-center">
+                      <a class="card-style d-block py-2 mx-0 px-2 mb-0 active" href="#" onclick="setListType('most')"><span class="font-800 font-12 text-uppercase">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="pt-1 pe-1 float-end" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <rect x="0" y="0" width="24" height="24"/>
+                              <rect fill="#000000" x="4" y="5" width="16" height="3" rx="1.5"/>
+                              <path d="M7.5,11 L16.5,11 C17.3284271,11 18,11.6715729 18,12.5 C18,13.3284271 17.3284271,14 16.5,14 L7.5,14 C6.67157288,14 6,13.3284271 6,12.5 C6,11.6715729 6.67157288,11 7.5,11 Z M10.5,17 L13.5,17 C14.3284271,17 15,17.6715729 15,18.5 C15,19.3284271 14.3284271,20 13.5,20 L10.5,20 C9.67157288,20 9,19.3284271 9,18.5 C9,17.6715729 9.67157288,17 10.5,17 Z" fill="#000000" opacity="0.3"/>
+                          </g>
+                      </svg>
+                      Kazanç</span></a>
+                    </div>
+                    <div class="col-4 text-center">
+                      <a class="card-style d-block py-2 mx-0 px-2 mb-0" href="#" onclick="setListType('percentile')"><span class="font-800 font-12 text-uppercase">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="pt-1 pe-1 float-end" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <rect x="0" y="0" width="24" height="24"/>
+                              <path d="M16.0322024,5.68722152 L5.75790403,15.945742 C5.12139076,16.5812778 5.12059836,17.6124773 5.75613416,18.2489906 C5.75642891,18.2492858 5.75672377,18.2495809 5.75701875,18.2498759 L5.75701875,18.2498759 C6.39304347,18.8859006 7.42424328,18.8859006 8.060268,18.2498759 C8.06056298,18.2495809 8.06085784,18.2492858 8.0611526,18.2489906 L18.3196731,7.9746922 C18.9505124,7.34288268 18.9501191,6.31942463 18.3187946,5.68810005 L18.3187946,5.68810005 C17.68747,5.05677547 16.6640119,5.05638225 16.0322024,5.68722152 Z" fill="#000000" fill-rule="nonzero"/>
+                              <path d="M9.85714286,6.92857143 C9.85714286,8.54730513 8.5469533,9.85714286 6.93006028,9.85714286 C5.31316726,9.85714286 4,8.54730513 4,6.92857143 C4,5.30983773 5.31316726,4 6.93006028,4 C8.5469533,4 9.85714286,5.30983773 9.85714286,6.92857143 Z M20,17.0714286 C20,18.6901623 18.6898104,20 17.0729174,20 C15.4560244,20 14.1428571,18.6901623 14.1428571,17.0714286 C14.1428571,15.4497247 15.4560244,14.1428571 17.0729174,14.1428571 C18.6898104,14.1428571 20,15.4497247 20,17.0714286 Z" fill="#000000" opacity="0.3"/>
+                          </g>
+                      </svg>Oransal</span></a>
+                    </div>
+                    <div class="col-4 text-center">
+                      <a class="card-style d-block py-2 mx-0 px-2 mb-0" href="#" onclick="setListType('numeral')"><span class="font-800 font-12 text-uppercase">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="pt-1 pe-1 float-end" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <rect x="0" y="0" width="24" height="24"/>
+                              <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3"/>
+                              <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000"/>
+                          </g>
+                      </svg>Sayısal</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-style">
+                <div class="content mb-0 mt-2 pt-2 pb-2">
+                    <div class="d-flex pb-2 mb-1">
+                        <div class="align-self-center">
+                            <h4 class="font-700 font-15 mb-0" id="earningTitle"></h4>
+                        </div>
+                    </div>
+                    <div class="divider mb-2"></div>
+                    <div id="earningList" class="listActiveEffect listDivider rowReset"></div>
+                </div>
+            </div>
+            <!-- <h4 class="px-3 mt-3">En'ler Tablosu</h4>
+            <div class="content mb-2 pb-2">
+                <div class="row mb-0">
+                    <div class="col-6 pe-2">
+                        <div class="card card-style mx-0 mb-3" data-card-height="170">
+                            <div class="card-top p-3">
+                                <h6 class="color-white mb-3">En Çok Büyüyen</h6>
+                                <span class="color-white font-22">Goviva</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="chart-container ms-n2 mb-n2" style="width:110%; height:120px;">
+                                    <canvas class="graph" id="incomeStats"></canvas>
+                                </div>
+                            </div>
+                            <div class="card-overlay gradient-green"></div>
+                            <div class="card-overlay bg-black opacity-50"></div>
+                        </div>
+                    </div>
+                    <div class="col-6 ps-2">
+                        <div class="card card-style mx-0 mb-3" data-card-height="170">
+                            <div class="card-top p-3">
+                                <h6 class="color-white mb-3">En Çok Kazanan</h6>
+                                <span class="color-white font-22">Sinan Hoçur</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="chart-container ms-n2 mb-n2" style="width:110%; height:120px;">
+                                    <canvas class="graph" id="newUserStats"></canvas>
+                                </div>
+                            </div>
+                            <div class="card-overlay gradient-blue"></div>
+                            <div class="card-overlay bg-black opacity-50"></div>
+                        </div>
+                    </div>
+                    <div class="col-6 pe-2">
+                        <div class="card card-style mx-0 mb-3" data-card-height="170">
+                            <div class="card-top p-3">
+                                <h6 class="color-white mb-3">En Başarılı <br> Ülke</h6>
+                                <span class="color-white font-22">Türkiye</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="chart-container ms-n2 mb-n2" style="width:110%; height:120px;">
+                                    <canvas class="graph" id="userReachStats"></canvas>
+                                </div>
+                            </div>
+                            <div class="card-overlay gradient-yellow"></div>
+                            <div class="card-overlay bg-black opacity-50"></div>
+                        </div>
+                    </div>
+                    <div class="col-6 ps-2">
+                        <div class="card card-style mx-0 mb-3" data-card-height="170">
+                            <div class="card-top p-3">
+                                <h6 class="color-white mb-3">En Çok Kazanan Şirket</h6>
+                                <span class="color-white font-22">Goviva</span>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="chart-container ms-n2 mb-n2" style="width:110%; height:120px;">
+                                    <canvas class="graph" id="userInteractionStats"></canvas>
+                                </div>
+                            </div>
+                            <div class="card-overlay gradient-magenta"></div>
+                            <div class="card-overlay bg-black opacity-50"></div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <style>
+
+            .month-input{
+                /* z-index:999!important; */
+                padding:15px 0px!important;
+                /* height:40px!important; */
+                line-height: 16px!important;
+                /*
+                margin-top: 50px; */
+            }
+            /* .month-block{
+                height:50px!important;
+            } */
+            .month-input:visited,
+            .month-input:active,
+            .month-input:focus{
+                /* height: 20px!important; */
+                line-height: 16px!important;
+                /* padding-bottom: 20px!important; */
+            }
+
+        </style>
+        
+        <div id="menu-add-earning" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Kazanç Ekle</h1>
+                <p class="color-highlight">5000$ dolar ve altı için sanal ofis zorunlu değildir</p>
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content mb-0 mt-3">
+                <div class="row mb-0 mt-3">
+                    <div class="col-12">
+                        <div class="input-style has-borders no-icon mb-3">
+                            <input type="number" class="form-control" id="userEarningAddAmount" onkeypress="onlyNumberInput(event)" onkeydown="earningAmountCheck(this)" onkeyup="earningAmountCheck(this)" placeholder="USD">
+                            <label for="userEarningAddAmount" class="color-theme font-10">USD</label>
+                            <em>(zorunlu)</em>
+                        </div>
+                        <!-- <div class="input-style has-borders no-icon mb-1">
+                            
+                            <input type="number" class="form-control" id="userEarningAddAmount"  onkeypress="onlyNumberInput(event)" onkeydown="earningAmountCheck(this)" onkeyup="earningAmountCheck(this)" placeholder="12,250">
+                            <label for="userEarningAddAmount" class="color-theme opacity-30 text-uppercase font-700 font-10 mt-1">USD</label>
+                            <em>(zorunlu)</em>
+                        </div> -->
+                    </div>
+                    <div class="col-12">
+                        <div class="input-sty le input-style-always-active no-borders no-icon">
+                            
+                            <select id="userEarningAddTime" class="select2">
+                              <option value="" disabled="">Ay Seçin</option>
+                            </select>
+
+                            <!-- <input type="month" id="userEarningAddTime" name="userEarningAddTime" class="form-control month-input">
+                            <label for="userEarningAddTime" class="color-theme opacity-30 text-uppercase font-700 font-10 mt-1">Ay Seçin</label> -->
+                            <!-- <em>(zorunlu)</em> -->
+                        </div>
+                    </div>
+                    <!-- <div class="col-8">
+                        <div class="input-style no-borders no-icon">
+                            <select id="userEarningAddYear">
+                                <option disabled value="default">Yıl Seçin</option>
+                            </select> 
+                            <label class="color-blue-dark" for="userEarningAddYear">Yıl Seçin</label> 
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-style no-borders no-icon">
+                            <label class="color-blue-dark" for="userEarningAddMonth">Ay Seçin</label> 
+                            <select id="userEarningAddMonth">
+                                <option disabled value="default">Ay Seçin</option>
+                            </select> 
+                            <span><i class="fa fa-chevron-down"></i></span> <i class="fa fa-check disabled valid color-green-dark"></i> <em></em>
+                        </div> 
+                    </div>-->
+                    <div class="col-12" id="userEarningAddReceipt">
+                        <!-- <div class="input-style input-style-always-active no-icon mb-2">
+                            <label for="file-upload3" class="color-theme opacity-75 text-uppercase font-700 font-10 mt-1">Dekont Yükle</label>
+                            
+                            <input type="file" id="upload-file-receipt" class="upload-file bg-highlight shadow-s rounded-xl " accept="image/*">
+                        </div> -->
+                          <div class="row mb-1">
+                            <!-- <div class="col-12">
+                                <div class="file-data pb-4">
+                                    <input type="file" id="upload-file-receipt" class="upload-file bg-fade-blue-dark rounded-sm font-600 font-16" accept="image/*"> -->
+                                    <!-- <input type="hidden" class="d-none" id="upload-file-register2"> -->
+                                    <!-- <p class="upload-file-text color-white">Dekont Yükle</p>
+                                </div>
+                            </div> -->
+                            <div class="col-12">
+                                
+                                <!-- <div class="input-style has-borders no-icon mb-3">
+                                    <input type="text" class="form-control" id="userEarningAddDesc" onkeypress="onlyNumberInput(event)" onkeydown="earningAmountCheck(this)" onkeyup="earningAmountCheck(this)" placeholder="USD">
+                                    <label for="userEarningAddDesc" class="color-theme font-10">USD</label>
+                                    <em>(zorunlu)</em>
+                                </div> -->
+                                <div class="input-style has-borders no-icon mt-3 mb-3">
+                                    <input type="text" class="form-control" id="userEarningAddDesc" name="userEarningAddDesc" placeholder="Açıklama">
+                                    <label for="userEarningAddDesc" class="color-theme opacity-30 font-10"></label>
+                                    <em>(zorunlu)</em>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="row mb-2">
+                            <div class="col-12">
+                                <div class="file-data pb-2">
+                                    <input type="file" id="upload-file-virtual-office" class="upload-file bg-fade-green-dark rounded-sm font-600 font-16" accept="image/*">
+                                    <!-- <input type="hidden" class="d-none" id="upload-file-register2"> -->
+                                    <p class="upload-file-text color-white">Sanal Ofİs Yükle</p>
+                                </div>
+                                
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="list-group list-custom-small mb-3" style="position: relative;">
+                            <a data-trigger-switch="userEarningCheck" href="#"><span class="font-12">Verdiğim bilgilerin doğruluğunu onaylıyorum </span>
+                            <div class="custom-control ios-switch">
+                                <input class="ios-input" id="userEarningCheck" toggle-earning-check="" type="checkbox"> <label class="custom-control-label" for="userEarningCheck"></label>
+                            </div></a>
+                        </div>
+                        <!-- <a data-trigger-switch="switch-2" class="border-0" href="#">
+                            <span>verdiğim bilgilerin doğruluğunu onaylıyorum </span>
+                            <div class="custom- control ios-switch scale-switch">
+                            <input type="checkbox" class="ios-input" id="switch-2">
+                            <label class="custom-control-label" for="switch-2"></label>
+                            </div>
+                            </a> -->
+                    </div>
+
+                    <div class="col-12">
+                        <a href="#" id="userEarningAddButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Onayla</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div id="menu-popup-profil" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Profil Özeti</h1>
+                <!-- <p class="color-highlight">Detaylı İnceleme Yapabilirsiniz</p> -->
+                <a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mb-1 mt-3"></div>
+            <div class="content">
+                
+            </div>
+        </div>
+
+        <!-- <div id="menu-sort-team" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Takım İçi Sıralama</h1>
+                <p class="color-highlight">Sırala Kriterini Seç</p><a href="#" class="close-menu"><i
+                        class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-3"></div>
+            <div class="content px-1">
+                <div class="input-style input-style-always-active no-borders no-icon">
+                    <label for="f1" class="color-theme opacity-30 text-uppercase font-700 font-10 mt-1">Bir Kriter Seç</label>
+                    <select id="f1">
+                        <option value="default" selected="">En Çok Kazanan</option>
+                        <option value="1">Ekibi oransal olarak en çok büyüyen</option>
+                        <option value="2">Ekibi sayısal olarak en çok büyüyen</option>
+                    </select>
+                    <span><i class="fa fa-chevron-down"></i></span>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <em></em>
+                </div>
+                <a href="#"
+                    class="close-menu btn btn-full btn-m bg-blue-dark rounded-sm text-uppercase font-700 mb-4">Sırala</a>
+            </div>
+        </div>
+        <div id="menu-sort-country" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Ülke Sıralama</h1>
+                <p class="color-highlight">Sırala Kriterini Seç</p><a href="#" class="close-menu"><i
+                        class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-3"></div>
+            <div class="content px-1">
+                <div class="input-style input-style-always-active no-borders no-icon">
+                    <label for="f1" class="color-theme opacity-30 text-uppercase font-700 font-10 mt-1">Bir Kriter Seç</label>
+                    <select id="f1">
+                        <option value="default" selected="">En Çok Kazanan</option>
+                        <option value="1">Ekibi oransal olarak en çok büyüyen</option>
+                        <option value="2">Ekibi sayısal olarak en çok büyüyen</option>
+                    </select>
+                    <span><i class="fa fa-chevron-down"></i></span>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <em></em>
+                </div>
+                <a href="#"
+                    class="close-menu btn btn-full btn-m bg-blue-dark rounded-sm text-uppercase font-700 mb-4">Sırala</a>
+            </div>
+        </div>
+        <div id="menu-sort-global" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Global Sıralama</h1>
+                <p class="color-highlight">Sırala Kriterini Seç</p><a href="#" class="close-menu"><i
+                        class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-3"></div>
+            <div class="content px-1">
+                <div class="input-style input-style-always-active no-borders no-icon">
+                    <label for="f1" class="color-theme opacity-30 text-uppercase font-700 font-10 mt-1">Bir Kriter Seç</label>
+                    <select id="f1">
+                        <option value="default" selected="">En Çok Kazanan</option>
+                        <option value="1">Ekibi oransal olarak en çok büyüyen</option>
+                        <option value="2">Ekibi sayısal olarak en çok büyüyen</option>
+                    </select>
+                    <span><i class="fa fa-chevron-down"></i></span>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <em></em>
+                </div>
+                <a href="#"
+                    class="close-menu btn btn-full btn-m bg-blue-dark rounded-sm text-uppercase font-700 mb-4">Sırala</a>
+            </div>
+        </div>
+        <div id="menu-sort-company" class="menu menu-box-bottom menu-box-detached">
+            <div class="menu-title">
+                <h1>Şirket İçi Sıralama</h1>
+                <p class="color-highlight">Sırala Kriterini Seç</p><a href="#" class="close-menu"><i
+                        class="fa fa-times"></i></a>
+            </div>
+            <div class="divider divider-margins mt-3 mb-3"></div>
+            <div class="content px-1">
+                <div class="input-style input-style-always-active no-borders no-icon">
+                    <label for="f1" class="color-theme opacity-30 text-uppercase font-700 font-10 mt-1">Bir Kriter Seç</label>
+                    <select id="f1">
+                        <option value="default" selected="">En Çok Kazanan</option>
+                        <option value="1">Ekibi oransal olarak en çok büyüyen</option>
+                        <option value="2">Ekibi sayısal olarak en çok büyüyen</option>
+                    </select>
+                    <span><i class="fa fa-chevron-down"></i></span>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <em></em>
+                </div>
+                <a href="#"
+                    class="close-menu btn btn-full btn-m bg-blue-dark rounded-sm text-uppercase font-700 mb-4">Sırala</a>
+            </div>
+        </div> -->
+
+        <include file="includes/menu.html"></include>
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/kazanclar.js"></script>
+    <!-- <script type="text/javascript" src="plugins/rolldate/rolldate.min.js"></script> -->
+    
+    <script src="scripts/jquery-3.5.1.min.js"></script>
+    <script src="scripts/select2.min.js"></script>
+    <script>
+      setTimeout(() => {
+        
+      }, 1000);
+    </script>
+    <script>
+        
+		window.onload = function() {
+
+            // new Rolldate({
+            //     el: '#userEarningAddAmount',
+            //     format: 'MM-YYYY',
+            //     min: '2022-05',
+            //     // beginYear: 2000,
+            //     // endYear: 2100,
+			// 	// value: '2017-10-21'
+            // });
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+
+        <div class="page-content header-clear-medium">
+    
+            <div class="card card-style mb-4 p-3">
+                <div class="d-flex mb-0">
+                    <div class="p s-3 m s-2 align-self-center">
+                        <h1 class="pt-4">Yayın Bilgileri</h1>
+                    </div>
+                    <div class="ms-auto m e-4 align-self-center">
+                        <a href="#" data-menu="add-hedef" class="icon icon-m gradient-blue rounded-m mb-3"><i class="fa fa-plus color-white "></i></a>
+                    </div>
+                </div>
+                <div class="input-style has-borders no-icon mb-4">
+                    <input type="url" class="form-control p-3" id="userAddLiveBroadcastTitle" placeholder="Yayın Başlığı">
+                    <label for="form44" class="color-highlight">Yayın Başlığı</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="input-style has-borders no-icon mb-2">
+                    <input type="url" class="form-control p-3" id="userAddLiveBroadcastEmbed" placeholder="Embed Kodu">
+                    <label for="form44" class="color-highlight">EMBED Kodu</label>
+                    <em>(zorunlu)</em>
+                </div>
+                <div class="col-12 mt-n2">
+                    
+                    <div class="list-group list-custom-small mb-3" style="position: relative">
+                        <a data-trigger-switch="userAddLiveBroadcastOnlyTeam" href="#"><span class="font-12">Takım İçinde Paylaş </span>
+                        <div class="custom-control ios-switch">
+                            <input class="ios-input" id="userAddLiveBroadcastOnlyTeam" toggle-earning-check="" type="checkbox" checked> <label class="custom-control-label" for="userAddLiveBroadcastOnlyTeam"></label>
+                        </div></a>
+                    </div>
+                </div>
+                <a href="#" id="userAddLiveBroadcast" class="btn btn-full btn-m rounded-sm bg-fade-blue-light shadow-xxl text-uppercase font-700">Kaydet</a>
+            </div>        
+        </div>
+
+
+
+        <include file="includes/menu.html"></include>
+
+    </div>
+    
+
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/canliyayinac.js"></script>
+</body>
+
+</html>

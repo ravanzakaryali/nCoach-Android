@@ -1,0 +1,419 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="styles/select2.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+      
+        <div class="page-content header-clear-medium">
+          <div class="card card-style">
+            
+            <div class="d-flex content">
+                    
+              <div class="flex-grow-1">
+                <h5 class="ps-1 mb-1 pt-1 line-height-xs font-17" get-data="user.name"></h5>
+                <h6 class="ps-1 mb-0 font-400 opacity-60 font-12"><span class="font-500" get-data="user.company"></span> <span id="usercareersetting"></span></h6>
+                <!-- <div>
+                  <span class="ps-1 mb-0 font-500 opacity-80 font-12" get-data="user.company">
+                  </span> -<span class="ps-1 mb-0 font-400 opacity-60 font-12" get-data="user.career"></span>
+                </div> -->
+                <!-- <div><span class="badge bg-blue-dark color-white isPremium">Premium</span></div> -->
+              </div>
+              <div>
+                <a href="profilim.html">
+                  <img class="rounded-circle mt- shadow-xl preload-img entered loaded" data-ll-status="loaded" src="images/profile.png" data-load="userImage" width="48">
+                </a>
+              </div>
+              <!-- <div class="flex-grow-1">
+                <div>
+                  <h1 class="font-700 mb-0" get-data="user.name"></h1>
+                  <p class="mb-0 pb-0 pe-3" get-data="user.company"></p>
+                  <div><span class="badge bg-blue-dark color-white isPremium">Premium</span></div>
+                </div>
+              </div>
+              <div></div> -->
+            </div>
+          </div>
+          <div class="card card-style">
+            <div class="content mt-0 mb-0">
+              <div class="list-group list-custom-large list-icon-0">
+                <a data-menu="menu-person" href="#" class="icon-ncoach">
+                  <!-- <i class="fa font-19"></i>  -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="customSvg me-3" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24"/>
+                            <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                            <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </svg>
+                  <span>Kişisel Bilgiler</span> <strong>Adı Soyadı, Telefon, Hakkımda Yazısını Güncelleyin</strong> 
+                  <i class="fa fa-chevron-right opacity-30 mt-1"></i>
+                </a>
+                <a data-menu="menu-image" href="#" class="icon-ncoach">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="customSvg me-3" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <polygon points="0 0 24 0 24 24 0 24"/>
+                        <rect fill="#000000" opacity="0.3" x="2" y="4" width="20" height="16" rx="2"/>
+                        <polygon fill="#000000" opacity="0.3" points="4 20 10.5 11 17 20"/>
+                        <polygon fill="#000000" points="11 20 15.5 14 20 20"/>
+                        <circle fill="#000000" opacity="0.3" cx="18.5" cy="8.5" r="1.5"/>
+                    </g>
+                  </svg>
+                  <span>Profil Fotoğrafı</span> <strong>Profilinizde Görünecek Fotoğrafınız</strong> 
+                  <i class="fa fa-chevron-right opacity-30 mt-1"></i>
+                </a>
+                <a data-menu="menu-password" href="#" class="icon-ncoach">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="customSvg me-3" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <rect x="0" y="0" width="24" height="24"/>
+                      <polygon fill="#000000" opacity="0.3" transform="translate(8.885842, 16.114158) rotate(-315.000000) translate(-8.885842, -16.114158) " points="6.89784488 10.6187476 6.76452164 19.4882481 8.88584198 21.6095684 11.0071623 19.4882481 9.59294876 18.0740345 10.9659914 16.7009919 9.55177787 15.2867783 11.0071623 13.8313939 10.8837471 10.6187476"/>
+                      <path d="M15.9852814,14.9852814 C12.6715729,14.9852814 9.98528137,12.2989899 9.98528137,8.98528137 C9.98528137,5.67157288 12.6715729,2.98528137 15.9852814,2.98528137 C19.2989899,2.98528137 21.9852814,5.67157288 21.9852814,8.98528137 C21.9852814,12.2989899 19.2989899,14.9852814 15.9852814,14.9852814 Z M16.1776695,9.07106781 C17.0060967,9.07106781 17.6776695,8.39949494 17.6776695,7.57106781 C17.6776695,6.74264069 17.0060967,6.07106781 16.1776695,6.07106781 C15.3492424,6.07106781 14.6776695,6.74264069 14.6776695,7.57106781 C14.6776695,8.39949494 15.3492424,9.07106781 16.1776695,9.07106781 Z" fill="#000000" transform="translate(15.985281, 8.985281) rotate(-315.000000) translate(-15.985281, -8.985281) "/>
+                    </g>
+                  </svg>
+                  <span>Şifre Değişikliği</span> <strong>Yeni Şifrenizi Belirleyin</strong> 
+                  <i class="fa fa-chevron-right opacity-30 mt-1"></i>
+                </a>
+                <a data-menu="menu-career" href="#" class="icon-ncoach">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="customSvg me-3" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <path d="M5.84026576,8 L18.1597342,8 C19.1999115,8 20.0664437,8.79732479 20.1528258,9.83390904 L20.8194924,17.833909 C20.9112219,18.9346631 20.0932459,19.901362 18.9924919,19.9930915 C18.9372479,19.9976952 18.8818364,20 18.8264009,20 L5.1735991,20 C4.0690296,20 3.1735991,19.1045695 3.1735991,18 C3.1735991,17.9445645 3.17590391,17.889153 3.18050758,17.833909 L3.84717425,9.83390904 C3.93355627,8.79732479 4.80008849,8 5.84026576,8 Z M10.5,10 C10.2238576,10 10,10.2238576 10,10.5 L10,11.5 C10,11.7761424 10.2238576,12 10.5,12 L13.5,12 C13.7761424,12 14,11.7761424 14,11.5 L14,10.5 C14,10.2238576 13.7761424,10 13.5,10 L10.5,10 Z" fill="#000000"/>
+                        <path d="M10,8 L8,8 L8,7 C8,5.34314575 9.34314575,4 11,4 L13,4 C14.6568542,4 16,5.34314575 16,7 L16,8 L14,8 L14,7 C14,6.44771525 13.5522847,6 13,6 L11,6 C10.4477153,6 10,6.44771525 10,7 L10,8 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                    </g>
+                </svg>
+                  <span>Konum ve Kariyer</span> <strong>Konumunuz ve Kariyer Ayarlarınızı Düzenleyin</strong> 
+                  <i class="fa fa-chevron-right opacity-30"></i>
+                </a>
+                <a data-menu="menu-social" href="#" class="icon-ncoach">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="customSvg me-3" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <path d="M11.575,21.2 C6.175,21.2 2.85,17.4 2.85,12.575 C2.85,6.875 7.375,3.05 12.525,3.05 C17.45,3.05 21.125,6.075 21.125,10.85 C21.125,15.2 18.825,16.925 16.525,16.925 C15.4,16.925 14.475,16.4 14.075,15.65 C13.3,16.4 12.125,16.875 11,16.875 C8.25,16.875 6.85,14.925 6.85,12.575 C6.85,9.55 9.05,7.1 12.275,7.1 C13.2,7.1 13.95,7.35 14.525,7.775 L14.625,7.35 L17,7.35 L15.825,12.85 C15.6,13.95 15.85,14.825 16.925,14.825 C18.25,14.825 19.025,13.725 19.025,10.8 C19.025,6.9 15.95,5.075 12.5,5.075 C8.625,5.075 5.05,7.75 5.05,12.575 C5.05,16.525 7.575,19.1 11.575,19.1 C13.075,19.1 14.625,18.775 15.975,18.075 L16.8,20.1 C15.25,20.8 13.2,21.2 11.575,21.2 Z M11.4,14.525 C12.05,14.525 12.7,14.35 13.225,13.825 L14.025,10.125 C13.575,9.65 12.925,9.425 12.3,9.425 C10.65,9.425 9.45,10.7 9.45,12.375 C9.45,13.675 10.075,14.525 11.4,14.525 Z" fill="#000000"/>
+                    </g>
+                  </svg>
+                  <span>Sosyal Medya Hesapları</span> <strong>Sosyal Medya Hesaplarınızı Düzenleyin</strong> 
+                  <i class="fa fa-chevron-right opacity-30"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="card card-style">
+            <div class="content mb-0 mt-0">
+              <div class="list-group list-custom-large list-icon-0">
+                
+                <a data-trigger-switch="settingFormPrivate" href="#" class="icon-ncoach">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="customSvg me-3" style="float: left;margin-top: 20px;" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <mask fill="white">
+                            <use xlink:href="#path-1"/>
+                        </mask>
+                        <g/>
+                        <path d="M7,10 L7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 L17,10 L18,10 C19.1045695,10 20,10.8954305 20,12 L20,18 C20,19.1045695 19.1045695,20 18,20 L6,20 C4.8954305,20 4,19.1045695 4,18 L4,12 C4,10.8954305 4.8954305,10 6,10 L7,10 Z M12,5 C10.3431458,5 9,6.34314575 9,8 L9,10 L15,10 L15,8 C15,6.34314575 13.6568542,5 12,5 Z" fill="#000000"/>
+                    </g>
+                </svg>
+                  <span>Gizli Hesap</span>
+                  <strong>Aktif Olduğunda Profil Bilgileri Gizlenir</strong>
+                  <div class="custom-control scale-switch ios-switch">
+                    <input type="checkbox" class="ios-input" id="settingFormPrivate">
+                    <label class="custom-control-label" for="settingFormPrivate"></label>
+                  </div>
+                    <i class="fa fa-chevron-right opacity-30"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card card-style">
+            <div class="content mb-0 mt-0">
+              <div class="list-group list-custom-large list-icon-0">
+                
+                <a id="userDeleteButton" href="#" class="icon-ncoach">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="customSvg me-3" style="float: left;margin-top: 20px;" width="24px" height="24px" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"/>
+                        <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" style="fill:rgba(250, 0, 33, 0.877)!important" fill-rule="nonzero"/>
+                        <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" style="fill:rgba(250, 0, 33, 0.877)!important" opacity="0.3"/>
+                    </g>
+                </svg>
+                  <span>Hesabımı Sil</span>
+                  <strong>Tüm verilerinizle birlikte hesap bilgileriniz silinir.</strong>
+                  <i class="fa fa-chevron-right opacity-30"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+     
+        </div>
+                
+        <div id="menu-user-career-change-block">
+          <div id="menu-user-career-change" class="menu menu-box-modal menu-box-detached pb-4">
+            <div class="d-flex align-item-center justify-content-center mt-3 px-3">
+              <svg class="warningSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24"/>
+                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                    <rect fill="#000000" x="11" y="7" width="2" height="8" rx="1"/>
+                    <rect fill="#000000" x="11" y="16" width="2" height="2" rx="1"/>
+                </g>
+              </svg>
+            </div>
+            <h1 class="text-center color-theme mt-2">Onaylıyor Musunuz?</h1>
+            <p class="ps-3 pe-3 text-center color-theme opacity-60 mb-4">Bütün Takım Arkadaşlarınız Profilinizden Silinecektir</p>
+            
+            <div class="content">
+              <div class="d-flex px-3">
+                <div class="">
+                  <a class="btn btn-s font-600 text-uppercase bg-fade-gray-light rounded-sm" href="#" id="usercompany-false">Vazgeç</a>
+                </div>
+                <div class="ms-auto">
+                  <a class="btn btn-s font-600 text-uppercase bg-fade-red-light rounded-sm" href="#" id="usercompany-true">
+                    Onayla</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="menu-user-delete-block">
+          <div id="menu-user-delete" class="menu menu-box-modal menu-box-detached pb-4">
+            <div class="d-flex align-item-center justify-content-center mt-3 px-3">
+              <svg class="warningSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <rect x="0" y="0" width="24" height="24"/>
+                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                    <rect fill="#000000" x="11" y="7" width="2" height="8" rx="1"/>
+                    <rect fill="#000000" x="11" y="16" width="2" height="2" rx="1"/>
+                </g>
+              </svg>
+            </div>
+            <h1 class="text-center color-theme mt-2">Tüm verilerinizle birlikte hesabınız silinecek</h1>
+            <p class="ps-3 pe-3 text-center color-theme opacity-60 mb-4">Emin misiniz?</p>
+            
+            <div class="content">
+              <div class="d-flex px-3">
+                <div class="">
+                  <a class="btn btn-s font-600 text-uppercase bg-fade-gray-light rounded-sm" href="#" id="userdelete-false">Vazgeç</a>
+                </div>
+                <div class="ms-auto">
+                  <a class="btn btn-s font-600 text-uppercase bg-fade-red-light rounded-sm" href="#" id="userdelete-true">
+                    Hesabımı SİL</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="menu-person" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title mt-0 pt-0">
+              <h1>Kişisel Bilgiler</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+          </div>
+          <!-- <div class="divider divider-margins mb-n2"></div> -->
+          <div class="content">
+            <div class="input-style has-borders has-icon">
+              <i class="fa fa-user"></i> 
+              <input class="form-control" id="settingFormName" placeholder="İsim Soyisim" type="name" value="" onkeypress="onlyTextInput(event)" onkeydown="toUpperCaseConvert(this)" onkeyup="toUpperCaseConvert(this)"> <label class="color-blue-dark font-12 mt-0" for="settingFormName">İsim Soyisim</label>
+              <em>(zorunlu)</em>
+            </div>
+            <div class="input-style has-borders has-icon mt-2">
+              <i class="fa fa-phone"></i> 
+              <input class="form-control" id="settingFormPhone" placeholder="Telefon Numarası" type="tel" value="" onkeypress="onlyNumberInput(event)"> 
+              <label class="color-blue-dark font-12 mt-0" for="settingFormPhone">Telefon Numarası</label>
+              <em>(zorunlu)</em>
+            </div>
+            <!-- <div class="input-style has-borders has-icon mt-2">
+              <i class="fa fa-at"></i> 
+              <input class="form-control" id="settingFormMail" readonly placeholder="Email" type="email" value="" onkeypress="removeTrim(event)" onkeydown="toLowerCaseConvert(this)" onkeyup="toLowerCaseConvert(this)"> 
+              <label class="color-blue-dark font-12 mt-0" for="settingFormMail">Email</label>
+              <em>(zorunlu)</em>
+            </div> -->
+            
+            <div class="input-style has-borders no-icon mb-4">
+              <textarea id="settingFormAbout" placeholder="Hakkınızda" maxlength="100"></textarea>
+              <label for="settingFormAbout">Hakkınızda</label>
+              <em class="mt-n3">(isteğe bağlı)</em>
+            </div>
+              
+              <a href="#" id="settingPersonButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Kaydet</a>
+          </div>
+        </div>
+        
+        <div id="menu-image" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title mt-0 pt-0">
+              <h1>Profil Fotoğrafı</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+          </div>
+          <!-- <div class="divider divider-margins mb-n2"></div> -->
+          <div class="content">
+            <div class="list-grup text-center list-custom-large upload-file-data">
+              <img id="settingFormImage" src="images/profile.png" width="115" height="115" class="rounded-circle mt-2 mb-2 shadow-xl preload-img">
+              
+            </div>
+            <div class="file-data pb-2">
+              <input type="file" id="upload-file-setting" class="upload-file upload-file-setting bg-highlight shadow-s rounded-xl " accept="image/*">
+              <p class="upload-file-text color-white font-600 text-uppercase font-14 btn btn-full btn-m px-4" style="margin-top:-45px!important">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                          <rect x="0" y="0" width="24" height="24"/>
+                          <path d="M2,13 C2,12.5 2.5,12 3,12 C3.5,12 4,12.5 4,13 C4,13.3333333 4,15 4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 C2,15 2,13.3333333 2,13 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                          <rect fill="#000000" opacity="0.3" x="11" y="2" width="2" height="14" rx="1"/>
+                          <path d="M12.0362375,3.37797611 L7.70710678,7.70710678 C7.31658249,8.09763107 6.68341751,8.09763107 6.29289322,7.70710678 C5.90236893,7.31658249 5.90236893,6.68341751 6.29289322,6.29289322 L11.2928932,1.29289322 C11.6689749,0.916811528 12.2736364,0.900910387 12.6689647,1.25670585 L17.6689647,5.75670585 C18.0794748,6.12616487 18.1127532,6.75845471 17.7432941,7.16896473 C17.3738351,7.57947475 16.7415453,7.61275317 16.3310353,7.24329415 L12.0362375,3.37797611 Z" fill="#000000" fill-rule="nonzero"/>
+                      </g>
+                  </svg>
+                  Resim Yükle</p>
+            </div>
+              
+              <a href="#" id="settingImageButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Kaydet</a>
+          </div>
+        </div>
+        
+        <div id="menu-password" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title mt-0 pt-0">
+              <h1>Şifre Değişikliği</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+          </div>
+          <!-- <div class="divider divider-margins mb-n2"></div> -->
+          <div class="content">
+
+            <div class="input-style has-borders has-icon mt-2">
+              <i class="fa fa-key"></i> 
+              <input class="form-control" id="settingFormOldPassword" placeholder="Eski Şifre" type="password" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormOldPassword">Eski Şifre</label> 
+              <em>(zorunlu)</em>
+            </div>
+            
+            <div class="input-style has-borders has-icon mt-2">
+              <i class="fa fa-key"></i> 
+              <input class="form-control" id="settingFormPassword" placeholder="Yeni Şifre" type="password" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormPassword">Yeni Şifre</label> 
+              <em>(zorunlu)</em>
+            </div>
+            <div class="input-style has-borders has-icon mt-2">
+              <i class="fa fa-key"></i> 
+              <input class="form-control" id="settingFormPassword2" placeholder="Şifre Tekrarı" type="password" value=""> 
+              <label class="color-blue-dark font-12 mt-0" for="settingFormPassword2">Şifre Tekrarı</label>
+              <em>(zorunlu)</em>
+            </div>
+              
+              <a href="#" id="settingPasswordButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Kaydet</a>
+          </div>
+        </div>
+        
+        <div id="menu-career" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title mt-0 pt-0">
+              <h1>Konum ve Kariyer</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+          </div>
+          <!-- <div class="divider divider-margins mb-n2"></div> -->
+          <div class="content">
+            <div class="inp ut-style has-borders has-icon">
+              <!-- <i class="fa fa-flag"></i>  -->
+              <!-- <label for="settingFormCountry">Ülke Seçin</label> -->
+              <select id="settingFormCountry" class="select2">
+                <option value="" disabled="">Ülke Seçin</option>
+              </select>
+              <!-- <em>(zorunlu)</em> -->
+            </div>
+
+            <div class="inp ut-style has-borders has-icon mt-2 mb-2">
+              <!-- <i class="fa fa-briefcase"></i>  -->
+              <input type="hidden" id="settingFormOldCompany">
+              <!-- <label for="settingFormCompany">Şirket Seçin</label> -->
+              <select id="settingFormCompany" class="select2">
+                <option value="">Şirket Seçin</option>
+              </select>
+              <!-- <em>(zorunlu)</em> -->
+            </div>
+
+            <div class="in put-style has-borders has-icon mb-3">
+              <!-- <i class="fa fa-user-tie"></i> -->
+              <!-- <label for="settingFormCarrier">Bir Kariyer Seçin</label> -->
+              <select id="settingFormCarrier" class="select2">
+                <option value="">Bir Kariyer Seçin</option>
+              </select>
+            </div>
+              
+            <a href="#" id="settingCareerButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Kaydet</a>
+          </div>
+        </div>
+
+        <div id="menu-social" class="menu menu-box-bottom menu-box-detached">
+          <div class="menu-title mt-0 pt-0">
+              <h1>Sosyal Medya Hesapları</h1><a href="#" class="close-menu"><i class="fa fa-times"></i></a>
+          </div>
+          <!-- <div class="divider divider-margins mb-n2"></div> -->
+          <div class="content">
+            
+            <div class="input-style has-borders has-icon">
+              <i class="fab fa-facebook-f"></i> <input class="form-control" id="settingFormFacebook" placeholder="Facebook" type="text" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormFacebook">Facebook</label>
+              <em>(isteğe bağlı)</em>
+            </div>
+            
+            <div class="input-style has-borders has-icon">
+              <i class="fab fa-instagram"></i> <input class="form-control" id="settingFormInstagram" placeholder="Instagram" type="text" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormInstagram">Instagram</label>
+              <em>(isteğe bağlı)</em>
+            </div>
+            
+            <div class="input-style has-borders has-icon">
+              <i class="fab fa-twitter"></i> <input class="form-control" id="settingFormTwitter" placeholder="Twitter" type="text" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormTwitter">Twitter</label>
+              <em>(isteğe bağlı)</em>
+            </div>
+            
+            <div class="input-style has-borders has-icon">
+              <i class="fab fa-linkedin"></i> <input class="form-control" id="settingFormLinkedin" placeholder="Linkedin" type="text" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormLinkedin">Linkedin</label>
+              <em>(isteğe bağlı)</em>
+            </div>
+            
+            <div class="input-style has-borders has-icon">
+              <i class="fab fa-pinterest"></i> <input class="form-control" id="settingFormPinterest" placeholder="Pinterest" type="text" value=""> <label class="color-blue-dark font-12 mt-0" for="settingFormPinterest">Pinterest</label>
+              <em>(isteğe bağlı)</em>
+            </div>
+              
+              <a href="#" id="settingSocialButton" class="btn btn-full btn-m font-600 font-16 rounded-sm text-uppercase bg-fade-blue-light mb-4">Kaydet</a>
+          </div>
+        </div>
+
+      <include file="includes/menu.html"></include>
+    
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/ayarlar.js"></script>
+    <script src="scripts/jquery-3.5.1.min.js"></script>
+    <script src="scripts/select2.min.js"></script>
+    <!-- <script>
+      setTimeout(() => {
+        
+      }, 1000);
+    </script> -->
+</body>
+
+</html>

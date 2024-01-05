@@ -1,0 +1,139 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(false);
+        });
+        
+        window.addEventListener('load', (event) => {
+            // console.log(new Date().getTime());
+            // console.log(window.getToken());
+        });
+    </script>
+    <style>
+        .background-changer .body-default, [data-gradient=body-default] #page{
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+      
+      <div class="header header-fixed header-logo-center header-transparent mt-3">
+        <a href="anasayfa.html" class="header-title"><img src="images/ncoach-logo2.svg" alt=""></a>
+    </div>
+      <div class="page-content pb-0">
+        <div class="splide single-slider slider-no-arrows" id="walkthrough-slider">
+          <div class="splide__track">
+            <div class="splide__list">
+              <div class="splide__slide">
+                <div class="card" data-card-height="cover">
+                  <div class="card-center text-center">
+                    <div class="content mt-n1">
+                      <img class="mb-3 mx-auto" src="images/undraw/1.svg" width="60%">
+                      <h1 class="mt-5 mb-0 font-30">Hoşgeldiniz</h1>
+                      <p class="mt-n1 color-highlight font-12"></p>
+                      <p class="boxed-text-xl">nCoach Uygulaması ile hayallerinize 1 adım daha yaklaşın.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="card" data-card-height="cover">
+                  <div class="card-center text-center">
+                    <div class="content mt-n1">
+                      <img class="mb-3 mx-auto" src="images/undraw/2.svg" width="60%">
+                      <h1 class="mt-5 mb-0 font-30">Kişilerinizi Ekleyin</h1>
+                      <p class="mt-n1 color-highlight font-12"></p>
+                      <p class="boxed-text-xl">Potansiyel müşteri adaylarınızın listesini oluşturun ve kategorilere ayırın.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="card" data-card-height="cover">
+                  <div class="card-center text-center">
+                    <div class="content mt-n1">
+                      <img class="mb-3 mx-auto" src="images/undraw/3.svg" width="60%">
+                      <h1 class="mt-5 mb-0 font-30">İş Ortamınızı Düzenleyin</h1>
+                      <p class="mt-n1 color-highlight font-12"></p>
+                      <p class="boxed-text-xl">Ajanda, kazanç, kişi ve hedef listesi özelliğiyle iş yönetimizi çok daha kolayca yapın.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="card" data-card-height="cover">
+                  <div class="card-center text-center">
+                    <div class="content mt-n1">
+                      <img class="mb-3 mx-auto" src="images/undraw/5.svg" width="60%">
+                      <h1 class="mt-5 mb-0 font-28">Hedeflerinizi Belirleyin</h1>
+                      <p class="mt-n1 color-highlight font-12"></p>
+                      <p class="boxed-text-xl">Başarı yolculuğunda gerçekleştirmek üzere belirlediğiniz hedefleri burada listeleyin.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="card" data-card-height="cover">
+                  <div class="card-center text-center">
+                    <div class="content mt-n1">
+                      <img class="mb-3 mx-auto" src="images/undraw/4.svg" width="60%">
+                      <h1 class="mt-5 mb-0 font-28">Canlı Yayın Yapın</h1>
+                      <p class="mt-n1 color-highlight font-12"></p>
+                      <p class="boxed-text-xl">Premiumlu Ol Sende Ayrıcalıklardan Faydalan</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="splide__slide">
+                <div class="card" data-card-height="cover">
+                  <div class="card-center text-center">
+                    <div class="content mt-n1">
+                      <img class="mb-3 mx-auto" src="images/undraw/6.svg" width="60%">
+                      <h1 class="mt-5 mb-0 font-28">Kazanç Tablosu</h1>
+                      <p class="mt-n1 color-highlight font-12"></p>
+                      <p class="boxed-text-xl">Siz ve Meslektaşlarınızın Gelişimlerini Gözlemleyin.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cover-button-bottom">
+          <a class="btn scale-box btn-m mt-5 btn-center-l rounded-l shadow-xl bg-blue-dark font-700 text-uppercase" data-back-button="" href="giris-yap.html">Hemen Keşfet</a>
+        </div>
+        <a class="cover-next slider-next color-gray-dark" href="#">İleri<i class="fa fa-angle-right me-4 ms-3"></i></a> 
+        <a class="cover-prev slider-prev color-gray-dark" href="#"><i class="fa fa-angle-left me-4 ms-4"></i>Geri</a>
+      </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    
+</body>
+
+</html>

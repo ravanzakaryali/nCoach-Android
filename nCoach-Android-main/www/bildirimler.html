@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>nCoach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            window.loginControl(true);
+            let userData = window.getUser();
+            if(userData){
+                window.setData({user:userData});
+            }
+        });
+    </script>
+</head>
+
+<body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
+    <div id="preloader">
+        <div class="spinner-border color-highlight" role="status"></div>
+    </div>
+    <include file="includes/import.html"></include>
+    <div id="page">
+        <include file="includes/header.html"></include>
+        <include file="includes/footer.html"></include>
+      
+        <div class="page-content header-clear-medium">
+            <div class="card card-style">
+                <div class="content">
+                    <div class="d-flex">
+                        <div>
+                            <p class="mb-n2 mt-n1 font-700 font-11 text-upperc ase color-highlight">nCoach</p>
+                            <h2 class="font-700">Bildirimler</h2>
+                        </div>
+                        <div class="ms-auto">
+                            <a href="#" class="icon icon-xs gradient-blue rounded-m"><i class="fa fa-bell color-white "></i></a>
+                        </div>
+                    </div>
+                    <p class="mb-0 isNormalUser">
+                        Premium avatanjlarından faydalarak sende takım üyelerine bildirim gönderebilirsin.
+                    </p>
+                </div>
+            </div>
+
+            <!-- <div class="card card-style bg-20 isNormalUser" data-card-height="300">
+                <div class="card-center p-3">
+                    <h1 class="color-white">Premiumlu Ol <br> Sende Ayrıcalıklardan Faydalan</h1>
+                </div>
+                <div class="card-top p-3">
+                    <span class="badge bg-blue-dark color-white p-2 float-end">Premium Satın Al</span>
+                </div>
+                <div class="card-bottom m-3">
+                    <h5 class="color-white float-start">Bildirim Gönder</h5>
+                    <h5 class="color-white float-end">Canlı Yayın Paylaş</h5>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="card-overlay bg-black opacity-70"></div>
+            </div> -->
+
+            <div class="card card-style">
+                <div class="content">
+                    <div class="row mb-2">
+                        <div class="col-12 text-center">
+                            <h4 class="font-700  font-22 ">Son Bildirimler</h4>
+                        </div>
+                    </div>
+                    <div class="divider mb-3"></div>
+                    <div id="userNotificationList" class="listActiveEffect listDivider rowReset"></div>
+                    
+                </div>
+            </div>
+
+         
+     
+        </div>
+
+        <include file="includes/menu.html"></include>
+    
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/custom_ncoach.js"></script>
+    <script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+    <script type="text/javascript" src="scripts/bildirimler.js"></script>
+</body>
+
+</html>

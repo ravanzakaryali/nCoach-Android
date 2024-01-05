@@ -1,0 +1,91 @@
+<div id="customPreloader">
+  <div class="loadingData preloaderBox">
+    <div class="preloaderSpinner"></div><p class="text-center">Lütfen Bekleyin..</p>
+  </div>
+</div>
+<div id="menu-offline" class="menu menu-box-modal rounded-m" data-menu-height="270" data-menu-width="300">
+  <div class="d-flex align-item-center justify-content-center mt-3">
+    <svg class="warningSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <rect x="0" y="0" width="24" height="24"/>
+          <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+          <rect fill="#000000" x="11" y="10" width="2" height="7" rx="1"/>
+          <rect fill="#000000" x="11" y="7" width="2" height="2" rx="1"/>
+      </g>
+    </svg>
+  </div>
+  <h1 class="text-center color-theme mt-2">İnternet Bağlantısı</h1>
+  <p class="ps-3 pe-3 text-center color-theme opacity-60 mb-3">Uygulamanın çalışması için internet bağlantısı gerekir. İşlem yapabilmek için lütfen WiFi veya Hücresel verilerinizi açın.</p>
+  <a class="close-menu btn btn-m font-600 text-uppercase bg-fade-blue-light rounded-sm btn-center-l" href="javascript:window.location.reload();">
+    
+    YENİLE
+  </a>
+</div>
+<div id="menu-notify-block">
+  <div id="menu-notify" class="menu menu-box-modal menu-box-detached pb-4">
+    <div class="d-flex align-item-center justify-content-center mt-3" id="notify-svg"></div>
+    <h1 class="text-center color-theme mt-2" id="notify-title"></h1>
+    <p class="ps-3 pe-3 text-center color-theme opacity-60 mb-4" id="notify-message"></p>
+    <a class="btn btn-s font-600 text-uppercase bg-fade-blue-light rounded-sm btn-center-l" href="#" id="notify-button"></a>
+    <div id="notify-html"></div>
+  </div>
+</div>
+<div id="menu-logout-block">
+  <div id="menu-logout" class="menu menu-box-modal menu-box-detached pb-4">
+    <div class="d-flex align-item-center justify-content-center mt-3 px-3">
+      <svg class="warningSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <rect x="0" y="0" width="24" height="24"/>
+            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+            <rect fill="#000000" x="11" y="7" width="2" height="8" rx="1"/>
+            <rect fill="#000000" x="11" y="16" width="2" height="2" rx="1"/>
+        </g>
+      </svg>
+    </div>
+    <h1 class="text-center color-theme mt-2">Çıkış Yapılacak</h1>
+    <p class="ps-3 pe-3 text-center color-theme opacity-60 mb-4">Emin misiniz?</p>
+    
+    <div class="content">
+      <div class="d-flex px-3">
+        <div class="">
+          <a class="btn btn-s font-600 text-uppercase bg-fade-gray-light rounded-sm" href="#" id="logout-false">Vazgeç</a>
+        </div>
+        <div class="ms-auto">
+          <a class="btn btn-s font-600 text-uppercase bg-fade-red-light rounded-sm" href="#" id="logout-true">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <rect x="0" y="0" width="24" height="24"/>
+                  <path d="M14.0069431,7.00607258 C13.4546584,7.00607258 13.0069431,6.55855153 13.0069431,6.00650634 C13.0069431,5.45446114 13.4546584,5.00694009 14.0069431,5.00694009 L15.0069431,5.00694009 C17.2160821,5.00694009 19.0069431,6.7970243 19.0069431,9.00520507 L19.0069431,15.001735 C19.0069431,17.2099158 17.2160821,19 15.0069431,19 L3.00694311,19 C0.797804106,19 -0.993056895,17.2099158 -0.993056895,15.001735 L-0.993056895,8.99826498 C-0.993056895,6.7900842 0.797804106,5 3.00694311,5 L4.00694793,5 C4.55923268,5 5.00694793,5.44752105 5.00694793,5.99956624 C5.00694793,6.55161144 4.55923268,6.99913249 4.00694793,6.99913249 L3.00694311,6.99913249 C1.90237361,6.99913249 1.00694311,7.89417459 1.00694311,8.99826498 L1.00694311,15.001735 C1.00694311,16.1058254 1.90237361,17.0008675 3.00694311,17.0008675 L15.0069431,17.0008675 C16.1115126,17.0008675 17.0069431,16.1058254 17.0069431,15.001735 L17.0069431,9.00520507 C17.0069431,7.90111468 16.1115126,7.00607258 15.0069431,7.00607258 L14.0069431,7.00607258 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(9.006943, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-9.006943, -12.000000) "/>
+                  <rect fill="#000000" opacity="0.3" transform="translate(14.000000, 12.000000) rotate(-270.000000) translate(-14.000000, -12.000000) " x="13" y="6" width="2" height="12" rx="1"/>
+                  <path d="M21.7928932,9.79289322 C22.1834175,9.40236893 22.8165825,9.40236893 23.2071068,9.79289322 C23.5976311,10.1834175 23.5976311,10.8165825 23.2071068,11.2071068 L20.2071068,14.2071068 C19.8165825,14.5976311 19.1834175,14.5976311 18.7928932,14.2071068 L15.7928932,11.2071068 C15.4023689,10.8165825 15.4023689,10.1834175 15.7928932,9.79289322 C16.1834175,9.40236893 16.8165825,9.40236893 17.2071068,9.79289322 L19.5,12.0857864 L21.7928932,9.79289322 Z" fill="#000000" fill-rule="nonzero" transform="translate(19.500000, 12.000000) rotate(-90.000000) translate(-19.500000, -12.000000) "/>
+              </g>
+          </svg>
+            Çıkış Yap</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="menu menu-box-modal menu-box-detached" id="customSelect">
+  <div class="menu-title">
+    <h1></h1><a class="close-menu" href="#"><i class="fa fa-times"></i></a>
+  </div>
+  <div class="divider divider-margins mb-1 mt-3"></div>
+  <div class="content">
+    <div class="row mb-0">
+      <div id="customSelectData"></div>
+      
+      
+      <div class="col-12">
+        <a class="close-menu btn btn-full btn-m bg-red-dark rounded-sm text-uppercase font-800 mb-3" href="#">Cancel Subscription</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<div class="container">
+  <div class="card card-slider card-style">
+      <div class="content mt-5">
+  <div id="export"></div></div></div>
+</div> -->
